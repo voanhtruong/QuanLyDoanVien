@@ -1,0 +1,1437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QuanLyDoanVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="GrantID" Type="int" />
+        </EntityType>
+        <EntityType Name="CapHoatDong">
+          <Key>
+            <PropertyRef Name="MaCapHoatDong" />
+          </Key>
+          <Property Name="MaCapHoatDong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CapHoatDong" Type="nvarchar" MaxLength="50" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ChiDoan">
+          <Key>
+            <PropertyRef Name="MaChiDoan" />
+          </Key>
+          <Property Name="MaChiDoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenChiDoan" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TenVietTat" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaDoanCoSo" Type="int" />
+          <Property Name="MaKhoaDaoTao" Type="int" />
+        </EntityType>
+        <EntityType Name="ChucVu">
+          <Key>
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaChucVu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChucVu" Type="nvarchar" MaxLength="100" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ChucVuChiDoan">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaChiDoan" />
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaSinhVien" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaChiDoan" Type="int" Nullable="false" />
+          <Property Name="MaChucVu" Type="int" Nullable="false" />
+          <Property Name="NgayNhanChuc" Type="date" />
+        </EntityType>
+        <EntityType Name="ChucVuDoanCoSo">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaDoanCoSo" />
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaSinhVien" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaDoanCoSo" Type="int" Nullable="false" />
+          <Property Name="MaChucVu" Type="int" Nullable="false" />
+          <Property Name="NgayNhanChuc" Type="date" />
+        </EntityType>
+        <EntityType Name="DangKyChuyenSinhHoat">
+          <Key>
+            <PropertyRef Name="MaPhieuDangKy" />
+          </Key>
+          <Property Name="MaPhieuDangKy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaSinhVien" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaSoChuyenSinhHoat" Type="int" Nullable="false" />
+          <Property Name="LiDo" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayDangKy" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DangKyHoatDong">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaHoatDong" />
+          </Key>
+          <Property Name="MaSinhVien" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaHoatDong" Type="int" Nullable="false" />
+          <Property Name="NgayDangKy" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DoanCoSo">
+          <Key>
+            <PropertyRef Name="MaDoanCoSo" />
+          </Key>
+          <Property Name="MaDoanCoSo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDoanCoSo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TenDCSVietTat" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DoanVien">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+          </Key>
+          <Property Name="MaSinhVien" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HoTenDoanVien" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="5" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="DanToc" Type="nvarchar" MaxLength="50" />
+          <Property Name="TonGiao" Type="nvarchar" MaxLength="50" />
+          <Property Name="QueQuan" Type="nvarchar(max)" />
+          <Property Name="NoiOHienNay" Type="nvarchar(max)" />
+          <Property Name="NgayVaoDang" Type="date" />
+          <Property Name="SoDienThoai" Type="char" MaxLength="11" />
+          <Property Name="MaSoDoan" Type="int" />
+          <Property Name="AccountID" Type="varchar" MaxLength="255" />
+          <Property Name="MaChiDoan" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DongDoanPhi">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaSoDoanPhi" />
+          </Key>
+          <Property Name="MaSinhVien" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaSoDoanPhi" Type="int" Nullable="false" />
+          <Property Name="SoTien" Type="money" Nullable="false" />
+          <Property Name="NgayNop" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grant">
+          <Key>
+            <PropertyRef Name="GrantID" />
+          </Key>
+          <Property Name="GrantID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GrantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="HoatDong">
+          <Key>
+            <PropertyRef Name="MaHoatDong" />
+          </Key>
+          <Property Name="MaHoatDong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenHoatDong" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ThoiGianBauDau" Type="date" />
+          <Property Name="ThoiGianKetThuc" Type="date" />
+          <Property Name="DiaDiem" Type="nvarchar(max)" />
+          <Property Name="MaCapHoatDong" Type="int" />
+        </EntityType>
+        <EntityType Name="KhenThuongKyLuatDoanVien">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaSoKhenThuongKyLuat" />
+          </Key>
+          <Property Name="MaSinhVien" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaSoKhenThuongKyLuat" Type="int" Nullable="false" />
+          <Property Name="SoQD" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayQD" Type="date" />
+          <Property Name="DonVi" Type="nvarchar" MaxLength="200" />
+          <Property Name="HinhThuc" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="KhoaDaoTao">
+          <Key>
+            <PropertyRef Name="MaKhoaDaoTao" />
+          </Key>
+          <Property Name="MaKhoaDaoTao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KhoaDaoTao" Type="varchar" MaxLength="50" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NhanXet">
+          <Key>
+            <PropertyRef Name="NamNhanXet" />
+          </Key>
+          <Property Name="NamNhanXet" Type="int" Nullable="false" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="XepLoai" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayNhanXet" Type="date" />
+          <Property Name="MaSoDoan" Type="int" />
+        </EntityType>
+        <EntityType Name="SoChuyenSinhHoat">
+          <Key>
+            <PropertyRef Name="MaSoChuyenSinhHoat" />
+          </Key>
+          <Property Name="MaSoChuyenSinhHoat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayBatDau" Type="date" Nullable="false" />
+          <Property Name="NgayKetThuc" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SoDoan">
+          <Key>
+            <PropertyRef Name="MaSoDoan" />
+          </Key>
+          <Property Name="MaSoDoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaTheDoan" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgayVaoDoan" Type="date" />
+          <Property Name="NoiVaoDoan" Type="nvarchar(max)" />
+          <Property Name="NgayCapThe" Type="date" />
+          <Property Name="NoiCapThe" Type="nvarchar" MaxLength="100" />
+          <Property Name="NgayNopSo" Type="date" />
+        </EntityType>
+        <EntityType Name="SoDoanPhi">
+          <Key>
+            <PropertyRef Name="MaSoDoanPhi" />
+          </Key>
+          <Property Name="MaSoDoanPhi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SoKhenThuongKyLuat">
+          <Key>
+            <PropertyRef Name="MaSoKhenThuongKyLuat" />
+          </Key>
+          <Property Name="MaSoKhenThuongKyLuat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Account_Grant">
+          <End Role="Grant" Type="Self.Grant" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grant">
+              <PropertyRef Name="GrantID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="GrantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiDoan_DoanCoSo">
+          <End Role="DoanCoSo" Type="Self.DoanCoSo" Multiplicity="0..1" />
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanCoSo">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Principal>
+            <Dependent Role="ChiDoan">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiDoan_MaKhoaDaoTao">
+          <End Role="KhoaDaoTao" Type="Self.KhoaDaoTao" Multiplicity="0..1" />
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhoaDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Principal>
+            <Dependent Role="ChiDoan">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuChiDoan_ChiDoan">
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="1" />
+          <End Role="ChucVuChiDoan" Type="Self.ChucVuChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiDoan">
+              <PropertyRef Name="MaChiDoan" />
+            </Principal>
+            <Dependent Role="ChucVuChiDoan">
+              <PropertyRef Name="MaChiDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuChiDoan_ChucVu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
+          <End Role="ChucVuChiDoan" Type="Self.ChucVuChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="ChucVuChiDoan">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuChiDoan_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="ChucVuChiDoan" Type="Self.ChucVuChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="ChucVuChiDoan">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuDoanCoSo_ChucVu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
+          <End Role="ChucVuDoanCoSo" Type="Self.ChucVuDoanCoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="ChucVuDoanCoSo">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuDoanCoSo_DoanCoSo">
+          <End Role="DoanCoSo" Type="Self.DoanCoSo" Multiplicity="1" />
+          <End Role="ChucVuDoanCoSo" Type="Self.ChucVuDoanCoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanCoSo">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Principal>
+            <Dependent Role="ChucVuDoanCoSo">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuDoanCoSo_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="ChucVuDoanCoSo" Type="Self.ChucVuDoanCoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="ChucVuDoanCoSo">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyChuyenSinhHoat_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="DangKyChuyenSinhHoat" Type="Self.DangKyChuyenSinhHoat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="DangKyChuyenSinhHoat">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat">
+          <End Role="SoChuyenSinhHoat" Type="Self.SoChuyenSinhHoat" Multiplicity="1" />
+          <End Role="DangKyChuyenSinhHoat" Type="Self.DangKyChuyenSinhHoat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoChuyenSinhHoat">
+              <PropertyRef Name="MaSoChuyenSinhHoat" />
+            </Principal>
+            <Dependent Role="DangKyChuyenSinhHoat">
+              <PropertyRef Name="MaSoChuyenSinhHoat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyHoatDong_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="DangKyHoatDong" Type="Self.DangKyHoatDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="DangKyHoatDong">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyHoatDong_HoatDong">
+          <End Role="HoatDong" Type="Self.HoatDong" Multiplicity="1" />
+          <End Role="DangKyHoatDong" Type="Self.DangKyHoatDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoatDong">
+              <PropertyRef Name="MaHoatDong" />
+            </Principal>
+            <Dependent Role="DangKyHoatDong">
+              <PropertyRef Name="MaHoatDong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoanVien_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DoanVien">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoanVien_ChiDoan">
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="1" />
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiDoan">
+              <PropertyRef Name="MaChiDoan" />
+            </Principal>
+            <Dependent Role="DoanVien">
+              <PropertyRef Name="MaChiDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoanVien_SoDoan">
+          <End Role="SoDoan" Type="Self.SoDoan" Multiplicity="0..1" />
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoDoan">
+              <PropertyRef Name="MaSoDoan" />
+            </Principal>
+            <Dependent Role="DoanVien">
+              <PropertyRef Name="MaSoDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DongDoanPhi_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="DongDoanPhi" Type="Self.DongDoanPhi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="DongDoanPhi">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DongDoanPhi_SoDoanPhi">
+          <End Role="SoDoanPhi" Type="Self.SoDoanPhi" Multiplicity="1" />
+          <End Role="DongDoanPhi" Type="Self.DongDoanPhi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoDoanPhi">
+              <PropertyRef Name="MaSoDoanPhi" />
+            </Principal>
+            <Dependent Role="DongDoanPhi">
+              <PropertyRef Name="MaSoDoanPhi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoatDong_CapHoatDong">
+          <End Role="CapHoatDong" Type="Self.CapHoatDong" Multiplicity="0..1" />
+          <End Role="HoatDong" Type="Self.HoatDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CapHoatDong">
+              <PropertyRef Name="MaCapHoatDong" />
+            </Principal>
+            <Dependent Role="HoatDong">
+              <PropertyRef Name="MaCapHoatDong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KhenThuongKyLuatDoanVien_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="KhenThuongKyLuatDoanVien" Type="Self.KhenThuongKyLuatDoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="KhenThuongKyLuatDoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KhenThuongKyLuatDoanVien_KTKL">
+          <End Role="SoKhenThuongKyLuat" Type="Self.SoKhenThuongKyLuat" Multiplicity="1" />
+          <End Role="KhenThuongKyLuatDoanVien" Type="Self.KhenThuongKyLuatDoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoKhenThuongKyLuat">
+              <PropertyRef Name="MaSoKhenThuongKyLuat" />
+            </Principal>
+            <Dependent Role="KhenThuongKyLuatDoanVien">
+              <PropertyRef Name="MaSoKhenThuongKyLuat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhanXet_SoDoan">
+          <End Role="SoDoan" Type="Self.SoDoan" Multiplicity="0..1" />
+          <End Role="NhanXet" Type="Self.NhanXet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoDoan">
+              <PropertyRef Name="MaSoDoan" />
+            </Principal>
+            <Dependent Role="NhanXet">
+              <PropertyRef Name="MaSoDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyDoanVienModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CapHoatDong" EntityType="Self.CapHoatDong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChiDoan" EntityType="Self.ChiDoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChucVuChiDoan" EntityType="Self.ChucVuChiDoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChucVuDoanCoSo" EntityType="Self.ChucVuDoanCoSo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DangKyChuyenSinhHoat" EntityType="Self.DangKyChuyenSinhHoat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DangKyHoatDong" EntityType="Self.DangKyHoatDong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoanCoSo" EntityType="Self.DoanCoSo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoanVien" EntityType="Self.DoanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DongDoanPhi" EntityType="Self.DongDoanPhi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grant" EntityType="Self.Grant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoatDong" EntityType="Self.HoatDong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhenThuongKyLuatDoanVien" EntityType="Self.KhenThuongKyLuatDoanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KhoaDaoTao" EntityType="Self.KhoaDaoTao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanXet" EntityType="Self.NhanXet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoChuyenSinhHoat" EntityType="Self.SoChuyenSinhHoat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoDoan" EntityType="Self.SoDoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoDoanPhi" EntityType="Self.SoDoanPhi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SoKhenThuongKyLuat" EntityType="Self.SoKhenThuongKyLuat" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Account_Grant" Association="Self.FK_Account_Grant">
+            <End Role="Grant" EntitySet="Grant" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiDoan_DoanCoSo" Association="Self.FK_ChiDoan_DoanCoSo">
+            <End Role="DoanCoSo" EntitySet="DoanCoSo" />
+            <End Role="ChiDoan" EntitySet="ChiDoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiDoan_MaKhoaDaoTao" Association="Self.FK_ChiDoan_MaKhoaDaoTao">
+            <End Role="KhoaDaoTao" EntitySet="KhoaDaoTao" />
+            <End Role="ChiDoan" EntitySet="ChiDoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuChiDoan_ChiDoan" Association="Self.FK_ChucVuChiDoan_ChiDoan">
+            <End Role="ChiDoan" EntitySet="ChiDoan" />
+            <End Role="ChucVuChiDoan" EntitySet="ChucVuChiDoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuChiDoan_ChucVu" Association="Self.FK_ChucVuChiDoan_ChucVu">
+            <End Role="ChucVu" EntitySet="ChucVu" />
+            <End Role="ChucVuChiDoan" EntitySet="ChucVuChiDoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuChiDoan_DoanVien" Association="Self.FK_ChucVuChiDoan_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanVien" />
+            <End Role="ChucVuChiDoan" EntitySet="ChucVuChiDoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuDoanCoSo_ChucVu" Association="Self.FK_ChucVuDoanCoSo_ChucVu">
+            <End Role="ChucVu" EntitySet="ChucVu" />
+            <End Role="ChucVuDoanCoSo" EntitySet="ChucVuDoanCoSo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuDoanCoSo_DoanCoSo" Association="Self.FK_ChucVuDoanCoSo_DoanCoSo">
+            <End Role="DoanCoSo" EntitySet="DoanCoSo" />
+            <End Role="ChucVuDoanCoSo" EntitySet="ChucVuDoanCoSo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuDoanCoSo_DoanVien" Association="Self.FK_ChucVuDoanCoSo_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanVien" />
+            <End Role="ChucVuDoanCoSo" EntitySet="ChucVuDoanCoSo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyChuyenSinhHoat_DoanVien" Association="Self.FK_DangKyChuyenSinhHoat_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanVien" />
+            <End Role="DangKyChuyenSinhHoat" EntitySet="DangKyChuyenSinhHoat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat" Association="Self.FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat">
+            <End Role="SoChuyenSinhHoat" EntitySet="SoChuyenSinhHoat" />
+            <End Role="DangKyChuyenSinhHoat" EntitySet="DangKyChuyenSinhHoat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyHoatDong_DoanVien" Association="Self.FK_DangKyHoatDong_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanVien" />
+            <End Role="DangKyHoatDong" EntitySet="DangKyHoatDong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyHoatDong_HoatDong" Association="Self.FK_DangKyHoatDong_HoatDong">
+            <End Role="HoatDong" EntitySet="HoatDong" />
+            <End Role="DangKyHoatDong" EntitySet="DangKyHoatDong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoanVien_Account" Association="Self.FK_DoanVien_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="DoanVien" EntitySet="DoanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoanVien_ChiDoan" Association="Self.FK_DoanVien_ChiDoan">
+            <End Role="ChiDoan" EntitySet="ChiDoan" />
+            <End Role="DoanVien" EntitySet="DoanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoanVien_SoDoan" Association="Self.FK_DoanVien_SoDoan">
+            <End Role="SoDoan" EntitySet="SoDoan" />
+            <End Role="DoanVien" EntitySet="DoanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DongDoanPhi_DoanVien" Association="Self.FK_DongDoanPhi_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanVien" />
+            <End Role="DongDoanPhi" EntitySet="DongDoanPhi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DongDoanPhi_SoDoanPhi" Association="Self.FK_DongDoanPhi_SoDoanPhi">
+            <End Role="SoDoanPhi" EntitySet="SoDoanPhi" />
+            <End Role="DongDoanPhi" EntitySet="DongDoanPhi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoatDong_CapHoatDong" Association="Self.FK_HoatDong_CapHoatDong">
+            <End Role="CapHoatDong" EntitySet="CapHoatDong" />
+            <End Role="HoatDong" EntitySet="HoatDong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KhenThuongKyLuatDoanVien_DoanVien" Association="Self.FK_KhenThuongKyLuatDoanVien_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanVien" />
+            <End Role="KhenThuongKyLuatDoanVien" EntitySet="KhenThuongKyLuatDoanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KhenThuongKyLuatDoanVien_KTKL" Association="Self.FK_KhenThuongKyLuatDoanVien_KTKL">
+            <End Role="SoKhenThuongKyLuat" EntitySet="SoKhenThuongKyLuat" />
+            <End Role="KhenThuongKyLuatDoanVien" EntitySet="KhenThuongKyLuatDoanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhanXet_SoDoan" Association="Self.FK_NhanXet_SoDoan">
+            <End Role="SoDoan" EntitySet="SoDoan" />
+            <End Role="NhanXet" EntitySet="NhanXet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyDoanVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="GrantID" Type="Int32" />
+          <NavigationProperty Name="Grant" Relationship="Self.FK_Account_Grant" FromRole="Account" ToRole="Grant" />
+          <NavigationProperty Name="DoanViens" Relationship="Self.FK_DoanVien_Account" FromRole="Account" ToRole="DoanVien" />
+        </EntityType>
+        <EntityType Name="CapHoatDong">
+          <Key>
+            <PropertyRef Name="MaCapHoatDong" />
+          </Key>
+          <Property Name="MaCapHoatDong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CapHoatDong1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HoatDongs" Relationship="Self.FK_HoatDong_CapHoatDong" FromRole="CapHoatDong" ToRole="HoatDong" />
+        </EntityType>
+        <EntityType Name="ChiDoan">
+          <Key>
+            <PropertyRef Name="MaChiDoan" />
+          </Key>
+          <Property Name="MaChiDoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenChiDoan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenVietTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaDoanCoSo" Type="Int32" />
+          <Property Name="MaKhoaDaoTao" Type="Int32" />
+          <NavigationProperty Name="DoanCoSo" Relationship="Self.FK_ChiDoan_DoanCoSo" FromRole="ChiDoan" ToRole="DoanCoSo" />
+          <NavigationProperty Name="KhoaDaoTao" Relationship="Self.FK_ChiDoan_MaKhoaDaoTao" FromRole="ChiDoan" ToRole="KhoaDaoTao" />
+          <NavigationProperty Name="ChucVuChiDoans" Relationship="Self.FK_ChucVuChiDoan_ChiDoan" FromRole="ChiDoan" ToRole="ChucVuChiDoan" />
+          <NavigationProperty Name="DoanViens" Relationship="Self.FK_DoanVien_ChiDoan" FromRole="ChiDoan" ToRole="DoanVien" />
+        </EntityType>
+        <EntityType Name="ChucVu">
+          <Key>
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaChucVu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChucVu1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChucVuChiDoans" Relationship="Self.FK_ChucVuChiDoan_ChucVu" FromRole="ChucVu" ToRole="ChucVuChiDoan" />
+          <NavigationProperty Name="ChucVuDoanCoSoes" Relationship="Self.FK_ChucVuDoanCoSo_ChucVu" FromRole="ChucVu" ToRole="ChucVuDoanCoSo" />
+        </EntityType>
+        <EntityType Name="ChucVuChiDoan">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaChiDoan" />
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaChiDoan" Type="Int32" Nullable="false" />
+          <Property Name="MaChucVu" Type="Int32" Nullable="false" />
+          <Property Name="NgayNhanChuc" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ChiDoan" Relationship="Self.FK_ChucVuChiDoan_ChiDoan" FromRole="ChucVuChiDoan" ToRole="ChiDoan" />
+          <NavigationProperty Name="ChucVu" Relationship="Self.FK_ChucVuChiDoan_ChucVu" FromRole="ChucVuChiDoan" ToRole="ChucVu" />
+          <NavigationProperty Name="DoanVien" Relationship="Self.FK_ChucVuChiDoan_DoanVien" FromRole="ChucVuChiDoan" ToRole="DoanVien" />
+        </EntityType>
+        <EntityType Name="ChucVuDoanCoSo">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaDoanCoSo" />
+            <PropertyRef Name="MaChucVu" />
+          </Key>
+          <Property Name="MaSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaDoanCoSo" Type="Int32" Nullable="false" />
+          <Property Name="MaChucVu" Type="Int32" Nullable="false" />
+          <Property Name="NgayNhanChuc" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="ChucVu" Relationship="Self.FK_ChucVuDoanCoSo_ChucVu" FromRole="ChucVuDoanCoSo" ToRole="ChucVu" />
+          <NavigationProperty Name="DoanCoSo" Relationship="Self.FK_ChucVuDoanCoSo_DoanCoSo" FromRole="ChucVuDoanCoSo" ToRole="DoanCoSo" />
+          <NavigationProperty Name="DoanVien" Relationship="Self.FK_ChucVuDoanCoSo_DoanVien" FromRole="ChucVuDoanCoSo" ToRole="DoanVien" />
+        </EntityType>
+        <EntityType Name="DangKyChuyenSinhHoat">
+          <Key>
+            <PropertyRef Name="MaPhieuDangKy" />
+          </Key>
+          <Property Name="MaPhieuDangKy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaSoChuyenSinhHoat" Type="Int32" Nullable="false" />
+          <Property Name="LiDo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayDangKy" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DoanVien" Relationship="Self.FK_DangKyChuyenSinhHoat_DoanVien" FromRole="DangKyChuyenSinhHoat" ToRole="DoanVien" />
+          <NavigationProperty Name="SoChuyenSinhHoat" Relationship="Self.FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat" FromRole="DangKyChuyenSinhHoat" ToRole="SoChuyenSinhHoat" />
+        </EntityType>
+        <EntityType Name="DangKyHoatDong">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaHoatDong" />
+          </Key>
+          <Property Name="MaSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaHoatDong" Type="Int32" Nullable="false" />
+          <Property Name="NgayDangKy" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DoanVien" Relationship="Self.FK_DangKyHoatDong_DoanVien" FromRole="DangKyHoatDong" ToRole="DoanVien" />
+          <NavigationProperty Name="HoatDong" Relationship="Self.FK_DangKyHoatDong_HoatDong" FromRole="DangKyHoatDong" ToRole="HoatDong" />
+        </EntityType>
+        <EntityType Name="DoanCoSo">
+          <Key>
+            <PropertyRef Name="MaDoanCoSo" />
+          </Key>
+          <Property Name="MaDoanCoSo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDoanCoSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenDCSVietTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ChiDoans" Relationship="Self.FK_ChiDoan_DoanCoSo" FromRole="DoanCoSo" ToRole="ChiDoan" />
+          <NavigationProperty Name="ChucVuDoanCoSoes" Relationship="Self.FK_ChucVuDoanCoSo_DoanCoSo" FromRole="DoanCoSo" ToRole="ChucVuDoanCoSo" />
+        </EntityType>
+        <EntityType Name="DoanVien">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+          </Key>
+          <Property Name="MaSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HoTenDoanVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="DanToc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TonGiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QueQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiOHienNay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayVaoDang" Type="DateTime" Precision="0" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="MaSoDoan" Type="Int32" />
+          <Property Name="AccountID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MaChiDoan" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_DoanVien_Account" FromRole="DoanVien" ToRole="Account" />
+          <NavigationProperty Name="ChiDoan" Relationship="Self.FK_DoanVien_ChiDoan" FromRole="DoanVien" ToRole="ChiDoan" />
+          <NavigationProperty Name="ChucVuChiDoans" Relationship="Self.FK_ChucVuChiDoan_DoanVien" FromRole="DoanVien" ToRole="ChucVuChiDoan" />
+          <NavigationProperty Name="ChucVuDoanCoSoes" Relationship="Self.FK_ChucVuDoanCoSo_DoanVien" FromRole="DoanVien" ToRole="ChucVuDoanCoSo" />
+          <NavigationProperty Name="DangKyChuyenSinhHoats" Relationship="Self.FK_DangKyChuyenSinhHoat_DoanVien" FromRole="DoanVien" ToRole="DangKyChuyenSinhHoat" />
+          <NavigationProperty Name="DangKyHoatDongs" Relationship="Self.FK_DangKyHoatDong_DoanVien" FromRole="DoanVien" ToRole="DangKyHoatDong" />
+          <NavigationProperty Name="SoDoan" Relationship="Self.FK_DoanVien_SoDoan" FromRole="DoanVien" ToRole="SoDoan" />
+          <NavigationProperty Name="DongDoanPhis" Relationship="Self.FK_DongDoanPhi_DoanVien" FromRole="DoanVien" ToRole="DongDoanPhi" />
+          <NavigationProperty Name="KhenThuongKyLuatDoanViens" Relationship="Self.FK_KhenThuongKyLuatDoanVien_DoanVien" FromRole="DoanVien" ToRole="KhenThuongKyLuatDoanVien" />
+        </EntityType>
+        <EntityType Name="DongDoanPhi">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaSoDoanPhi" />
+          </Key>
+          <Property Name="MaSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaSoDoanPhi" Type="Int32" Nullable="false" />
+          <Property Name="SoTien" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="NgayNop" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DoanVien" Relationship="Self.FK_DongDoanPhi_DoanVien" FromRole="DongDoanPhi" ToRole="DoanVien" />
+          <NavigationProperty Name="SoDoanPhi" Relationship="Self.FK_DongDoanPhi_SoDoanPhi" FromRole="DongDoanPhi" ToRole="SoDoanPhi" />
+        </EntityType>
+        <EntityType Name="Grant">
+          <Key>
+            <PropertyRef Name="GrantID" />
+          </Key>
+          <Property Name="GrantID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GrantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Grant" FromRole="Grant" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="HoatDong">
+          <Key>
+            <PropertyRef Name="MaHoatDong" />
+          </Key>
+          <Property Name="MaHoatDong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenHoatDong" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThoiGianBauDau" Type="DateTime" Precision="0" />
+          <Property Name="ThoiGianKetThuc" Type="DateTime" Precision="0" />
+          <Property Name="DiaDiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaCapHoatDong" Type="Int32" />
+          <NavigationProperty Name="CapHoatDong" Relationship="Self.FK_HoatDong_CapHoatDong" FromRole="HoatDong" ToRole="CapHoatDong" />
+          <NavigationProperty Name="DangKyHoatDongs" Relationship="Self.FK_DangKyHoatDong_HoatDong" FromRole="HoatDong" ToRole="DangKyHoatDong" />
+        </EntityType>
+        <EntityType Name="KhenThuongKyLuatDoanVien">
+          <Key>
+            <PropertyRef Name="MaSinhVien" />
+            <PropertyRef Name="MaSoKhenThuongKyLuat" />
+          </Key>
+          <Property Name="MaSinhVien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaSoKhenThuongKyLuat" Type="Int32" Nullable="false" />
+          <Property Name="SoQD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayQD" Type="DateTime" Precision="0" />
+          <Property Name="DonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="HinhThuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DoanVien" Relationship="Self.FK_KhenThuongKyLuatDoanVien_DoanVien" FromRole="KhenThuongKyLuatDoanVien" ToRole="DoanVien" />
+          <NavigationProperty Name="SoKhenThuongKyLuat" Relationship="Self.FK_KhenThuongKyLuatDoanVien_KTKL" FromRole="KhenThuongKyLuatDoanVien" ToRole="SoKhenThuongKyLuat" />
+        </EntityType>
+        <EntityType Name="KhoaDaoTao">
+          <Key>
+            <PropertyRef Name="MaKhoaDaoTao" />
+          </Key>
+          <Property Name="MaKhoaDaoTao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KhoaDaoTao1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MoTa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChiDoans" Relationship="Self.FK_ChiDoan_MaKhoaDaoTao" FromRole="KhoaDaoTao" ToRole="ChiDoan" />
+        </EntityType>
+        <EntityType Name="NhanXet">
+          <Key>
+            <PropertyRef Name="NamNhanXet" />
+          </Key>
+          <Property Name="NamNhanXet" Type="Int32" Nullable="false" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="XepLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNhanXet" Type="DateTime" Precision="0" />
+          <Property Name="MaSoDoan" Type="Int32" />
+          <NavigationProperty Name="SoDoan" Relationship="Self.FK_NhanXet_SoDoan" FromRole="NhanXet" ToRole="SoDoan" />
+        </EntityType>
+        <EntityType Name="SoChuyenSinhHoat">
+          <Key>
+            <PropertyRef Name="MaSoChuyenSinhHoat" />
+          </Key>
+          <Property Name="MaSoChuyenSinhHoat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayKetThuc" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DangKyChuyenSinhHoats" Relationship="Self.FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat" FromRole="SoChuyenSinhHoat" ToRole="DangKyChuyenSinhHoat" />
+        </EntityType>
+        <EntityType Name="SoDoan">
+          <Key>
+            <PropertyRef Name="MaSoDoan" />
+          </Key>
+          <Property Name="MaSoDoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaTheDoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayVaoDoan" Type="DateTime" Precision="0" />
+          <Property Name="NoiVaoDoan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayCapThe" Type="DateTime" Precision="0" />
+          <Property Name="NoiCapThe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNopSo" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DoanViens" Relationship="Self.FK_DoanVien_SoDoan" FromRole="SoDoan" ToRole="DoanVien" />
+          <NavigationProperty Name="NhanXets" Relationship="Self.FK_NhanXet_SoDoan" FromRole="SoDoan" ToRole="NhanXet" />
+        </EntityType>
+        <EntityType Name="SoDoanPhi">
+          <Key>
+            <PropertyRef Name="MaSoDoanPhi" />
+          </Key>
+          <Property Name="MaSoDoanPhi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DongDoanPhis" Relationship="Self.FK_DongDoanPhi_SoDoanPhi" FromRole="SoDoanPhi" ToRole="DongDoanPhi" />
+        </EntityType>
+        <EntityType Name="SoKhenThuongKyLuat">
+          <Key>
+            <PropertyRef Name="MaSoKhenThuongKyLuat" />
+          </Key>
+          <Property Name="MaSoKhenThuongKyLuat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="KhenThuongKyLuatDoanViens" Relationship="Self.FK_KhenThuongKyLuatDoanVien_KTKL" FromRole="SoKhenThuongKyLuat" ToRole="KhenThuongKyLuatDoanVien" />
+        </EntityType>
+        <Association Name="FK_Account_Grant">
+          <End Role="Grant" Type="Self.Grant" Multiplicity="0..1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grant">
+              <PropertyRef Name="GrantID" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="GrantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoanVien_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DoanVien">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoatDong_CapHoatDong">
+          <End Role="CapHoatDong" Type="Self.CapHoatDong" Multiplicity="0..1" />
+          <End Role="HoatDong" Type="Self.HoatDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CapHoatDong">
+              <PropertyRef Name="MaCapHoatDong" />
+            </Principal>
+            <Dependent Role="HoatDong">
+              <PropertyRef Name="MaCapHoatDong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiDoan_DoanCoSo">
+          <End Role="DoanCoSo" Type="Self.DoanCoSo" Multiplicity="0..1" />
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanCoSo">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Principal>
+            <Dependent Role="ChiDoan">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiDoan_MaKhoaDaoTao">
+          <End Role="KhoaDaoTao" Type="Self.KhoaDaoTao" Multiplicity="0..1" />
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhoaDaoTao">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Principal>
+            <Dependent Role="ChiDoan">
+              <PropertyRef Name="MaKhoaDaoTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuChiDoan_ChiDoan">
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="1" />
+          <End Role="ChucVuChiDoan" Type="Self.ChucVuChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiDoan">
+              <PropertyRef Name="MaChiDoan" />
+            </Principal>
+            <Dependent Role="ChucVuChiDoan">
+              <PropertyRef Name="MaChiDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoanVien_ChiDoan">
+          <End Role="ChiDoan" Type="Self.ChiDoan" Multiplicity="1" />
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChiDoan">
+              <PropertyRef Name="MaChiDoan" />
+            </Principal>
+            <Dependent Role="DoanVien">
+              <PropertyRef Name="MaChiDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuChiDoan_ChucVu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
+          <End Role="ChucVuChiDoan" Type="Self.ChucVuChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="ChucVuChiDoan">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuDoanCoSo_ChucVu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
+          <End Role="ChucVuDoanCoSo" Type="Self.ChucVuDoanCoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="ChucVuDoanCoSo">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuChiDoan_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="ChucVuChiDoan" Type="Self.ChucVuChiDoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="ChucVuChiDoan">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuDoanCoSo_DoanCoSo">
+          <End Role="DoanCoSo" Type="Self.DoanCoSo" Multiplicity="1" />
+          <End Role="ChucVuDoanCoSo" Type="Self.ChucVuDoanCoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanCoSo">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Principal>
+            <Dependent Role="ChucVuDoanCoSo">
+              <PropertyRef Name="MaDoanCoSo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChucVuDoanCoSo_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="ChucVuDoanCoSo" Type="Self.ChucVuDoanCoSo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="ChucVuDoanCoSo">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyChuyenSinhHoat_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="DangKyChuyenSinhHoat" Type="Self.DangKyChuyenSinhHoat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="DangKyChuyenSinhHoat">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat">
+          <End Role="SoChuyenSinhHoat" Type="Self.SoChuyenSinhHoat" Multiplicity="1" />
+          <End Role="DangKyChuyenSinhHoat" Type="Self.DangKyChuyenSinhHoat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoChuyenSinhHoat">
+              <PropertyRef Name="MaSoChuyenSinhHoat" />
+            </Principal>
+            <Dependent Role="DangKyChuyenSinhHoat">
+              <PropertyRef Name="MaSoChuyenSinhHoat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyHoatDong_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="DangKyHoatDong" Type="Self.DangKyHoatDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="DangKyHoatDong">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DangKyHoatDong_HoatDong">
+          <End Role="HoatDong" Type="Self.HoatDong" Multiplicity="1" />
+          <End Role="DangKyHoatDong" Type="Self.DangKyHoatDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoatDong">
+              <PropertyRef Name="MaHoatDong" />
+            </Principal>
+            <Dependent Role="DangKyHoatDong">
+              <PropertyRef Name="MaHoatDong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoanVien_SoDoan">
+          <End Role="SoDoan" Type="Self.SoDoan" Multiplicity="0..1" />
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoDoan">
+              <PropertyRef Name="MaSoDoan" />
+            </Principal>
+            <Dependent Role="DoanVien">
+              <PropertyRef Name="MaSoDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DongDoanPhi_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="DongDoanPhi" Type="Self.DongDoanPhi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="DongDoanPhi">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KhenThuongKyLuatDoanVien_DoanVien">
+          <End Role="DoanVien" Type="Self.DoanVien" Multiplicity="1" />
+          <End Role="KhenThuongKyLuatDoanVien" Type="Self.KhenThuongKyLuatDoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Principal>
+            <Dependent Role="KhenThuongKyLuatDoanVien">
+              <PropertyRef Name="MaSinhVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DongDoanPhi_SoDoanPhi">
+          <End Role="SoDoanPhi" Type="Self.SoDoanPhi" Multiplicity="1" />
+          <End Role="DongDoanPhi" Type="Self.DongDoanPhi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoDoanPhi">
+              <PropertyRef Name="MaSoDoanPhi" />
+            </Principal>
+            <Dependent Role="DongDoanPhi">
+              <PropertyRef Name="MaSoDoanPhi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KhenThuongKyLuatDoanVien_KTKL">
+          <End Role="SoKhenThuongKyLuat" Type="Self.SoKhenThuongKyLuat" Multiplicity="1" />
+          <End Role="KhenThuongKyLuatDoanVien" Type="Self.KhenThuongKyLuatDoanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoKhenThuongKyLuat">
+              <PropertyRef Name="MaSoKhenThuongKyLuat" />
+            </Principal>
+            <Dependent Role="KhenThuongKyLuatDoanVien">
+              <PropertyRef Name="MaSoKhenThuongKyLuat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhanXet_SoDoan">
+          <End Role="SoDoan" Type="Self.SoDoan" Multiplicity="0..1" />
+          <End Role="NhanXet" Type="Self.NhanXet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SoDoan">
+              <PropertyRef Name="MaSoDoan" />
+            </Principal>
+            <Dependent Role="NhanXet">
+              <PropertyRef Name="MaSoDoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyDoanVienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="CapHoatDongs" EntityType="Self.CapHoatDong" />
+          <EntitySet Name="ChiDoans" EntityType="Self.ChiDoan" />
+          <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
+          <EntitySet Name="ChucVuChiDoans" EntityType="Self.ChucVuChiDoan" />
+          <EntitySet Name="ChucVuDoanCoSoes" EntityType="Self.ChucVuDoanCoSo" />
+          <EntitySet Name="DangKyChuyenSinhHoats" EntityType="Self.DangKyChuyenSinhHoat" />
+          <EntitySet Name="DangKyHoatDongs" EntityType="Self.DangKyHoatDong" />
+          <EntitySet Name="DoanCoSoes" EntityType="Self.DoanCoSo" />
+          <EntitySet Name="DoanViens" EntityType="Self.DoanVien" />
+          <EntitySet Name="DongDoanPhis" EntityType="Self.DongDoanPhi" />
+          <EntitySet Name="Grants" EntityType="Self.Grant" />
+          <EntitySet Name="HoatDongs" EntityType="Self.HoatDong" />
+          <EntitySet Name="KhenThuongKyLuatDoanViens" EntityType="Self.KhenThuongKyLuatDoanVien" />
+          <EntitySet Name="KhoaDaoTaos" EntityType="Self.KhoaDaoTao" />
+          <EntitySet Name="NhanXets" EntityType="Self.NhanXet" />
+          <EntitySet Name="SoChuyenSinhHoats" EntityType="Self.SoChuyenSinhHoat" />
+          <EntitySet Name="SoDoans" EntityType="Self.SoDoan" />
+          <EntitySet Name="SoDoanPhis" EntityType="Self.SoDoanPhi" />
+          <EntitySet Name="SoKhenThuongKyLuats" EntityType="Self.SoKhenThuongKyLuat" />
+          <AssociationSet Name="FK_Account_Grant" Association="Self.FK_Account_Grant">
+            <End Role="Grant" EntitySet="Grants" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoanVien_Account" Association="Self.FK_DoanVien_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="DoanVien" EntitySet="DoanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoatDong_CapHoatDong" Association="Self.FK_HoatDong_CapHoatDong">
+            <End Role="CapHoatDong" EntitySet="CapHoatDongs" />
+            <End Role="HoatDong" EntitySet="HoatDongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiDoan_DoanCoSo" Association="Self.FK_ChiDoan_DoanCoSo">
+            <End Role="DoanCoSo" EntitySet="DoanCoSoes" />
+            <End Role="ChiDoan" EntitySet="ChiDoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiDoan_MaKhoaDaoTao" Association="Self.FK_ChiDoan_MaKhoaDaoTao">
+            <End Role="KhoaDaoTao" EntitySet="KhoaDaoTaos" />
+            <End Role="ChiDoan" EntitySet="ChiDoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuChiDoan_ChiDoan" Association="Self.FK_ChucVuChiDoan_ChiDoan">
+            <End Role="ChiDoan" EntitySet="ChiDoans" />
+            <End Role="ChucVuChiDoan" EntitySet="ChucVuChiDoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoanVien_ChiDoan" Association="Self.FK_DoanVien_ChiDoan">
+            <End Role="ChiDoan" EntitySet="ChiDoans" />
+            <End Role="DoanVien" EntitySet="DoanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuChiDoan_ChucVu" Association="Self.FK_ChucVuChiDoan_ChucVu">
+            <End Role="ChucVu" EntitySet="ChucVus" />
+            <End Role="ChucVuChiDoan" EntitySet="ChucVuChiDoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuDoanCoSo_ChucVu" Association="Self.FK_ChucVuDoanCoSo_ChucVu">
+            <End Role="ChucVu" EntitySet="ChucVus" />
+            <End Role="ChucVuDoanCoSo" EntitySet="ChucVuDoanCoSoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuChiDoan_DoanVien" Association="Self.FK_ChucVuChiDoan_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanViens" />
+            <End Role="ChucVuChiDoan" EntitySet="ChucVuChiDoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuDoanCoSo_DoanCoSo" Association="Self.FK_ChucVuDoanCoSo_DoanCoSo">
+            <End Role="DoanCoSo" EntitySet="DoanCoSoes" />
+            <End Role="ChucVuDoanCoSo" EntitySet="ChucVuDoanCoSoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChucVuDoanCoSo_DoanVien" Association="Self.FK_ChucVuDoanCoSo_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanViens" />
+            <End Role="ChucVuDoanCoSo" EntitySet="ChucVuDoanCoSoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyChuyenSinhHoat_DoanVien" Association="Self.FK_DangKyChuyenSinhHoat_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanViens" />
+            <End Role="DangKyChuyenSinhHoat" EntitySet="DangKyChuyenSinhHoats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat" Association="Self.FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat">
+            <End Role="SoChuyenSinhHoat" EntitySet="SoChuyenSinhHoats" />
+            <End Role="DangKyChuyenSinhHoat" EntitySet="DangKyChuyenSinhHoats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyHoatDong_DoanVien" Association="Self.FK_DangKyHoatDong_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanViens" />
+            <End Role="DangKyHoatDong" EntitySet="DangKyHoatDongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DangKyHoatDong_HoatDong" Association="Self.FK_DangKyHoatDong_HoatDong">
+            <End Role="HoatDong" EntitySet="HoatDongs" />
+            <End Role="DangKyHoatDong" EntitySet="DangKyHoatDongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoanVien_SoDoan" Association="Self.FK_DoanVien_SoDoan">
+            <End Role="SoDoan" EntitySet="SoDoans" />
+            <End Role="DoanVien" EntitySet="DoanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DongDoanPhi_DoanVien" Association="Self.FK_DongDoanPhi_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanViens" />
+            <End Role="DongDoanPhi" EntitySet="DongDoanPhis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KhenThuongKyLuatDoanVien_DoanVien" Association="Self.FK_KhenThuongKyLuatDoanVien_DoanVien">
+            <End Role="DoanVien" EntitySet="DoanViens" />
+            <End Role="KhenThuongKyLuatDoanVien" EntitySet="KhenThuongKyLuatDoanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DongDoanPhi_SoDoanPhi" Association="Self.FK_DongDoanPhi_SoDoanPhi">
+            <End Role="SoDoanPhi" EntitySet="SoDoanPhis" />
+            <End Role="DongDoanPhi" EntitySet="DongDoanPhis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KhenThuongKyLuatDoanVien_KTKL" Association="Self.FK_KhenThuongKyLuatDoanVien_KTKL">
+            <End Role="SoKhenThuongKyLuat" EntitySet="SoKhenThuongKyLuats" />
+            <End Role="KhenThuongKyLuatDoanVien" EntitySet="KhenThuongKyLuatDoanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhanXet_SoDoan" Association="Self.FK_NhanXet_SoDoan">
+            <End Role="SoDoan" EntitySet="SoDoans" />
+            <End Role="NhanXet" EntitySet="NhanXets" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyDoanVienModelStoreContainer" CdmEntityContainer="QuanLyDoanVienEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="GrantID" ColumnName="GrantID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CapHoatDongs">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.CapHoatDong">
+              <MappingFragment StoreEntitySet="CapHoatDong">
+                <ScalarProperty Name="MaCapHoatDong" ColumnName="MaCapHoatDong" />
+                <ScalarProperty Name="CapHoatDong1" ColumnName="CapHoatDong" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChiDoans">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.ChiDoan">
+              <MappingFragment StoreEntitySet="ChiDoan">
+                <ScalarProperty Name="MaChiDoan" ColumnName="MaChiDoan" />
+                <ScalarProperty Name="TenChiDoan" ColumnName="TenChiDoan" />
+                <ScalarProperty Name="TenVietTat" ColumnName="TenVietTat" />
+                <ScalarProperty Name="MaDoanCoSo" ColumnName="MaDoanCoSo" />
+                <ScalarProperty Name="MaKhoaDaoTao" ColumnName="MaKhoaDaoTao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChucVus">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.ChucVu">
+              <MappingFragment StoreEntitySet="ChucVu">
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+                <ScalarProperty Name="ChucVu1" ColumnName="ChucVu" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChucVuChiDoans">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.ChucVuChiDoan">
+              <MappingFragment StoreEntitySet="ChucVuChiDoan">
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="MaChiDoan" ColumnName="MaChiDoan" />
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+                <ScalarProperty Name="NgayNhanChuc" ColumnName="NgayNhanChuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChucVuDoanCoSoes">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.ChucVuDoanCoSo">
+              <MappingFragment StoreEntitySet="ChucVuDoanCoSo">
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="MaDoanCoSo" ColumnName="MaDoanCoSo" />
+                <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
+                <ScalarProperty Name="NgayNhanChuc" ColumnName="NgayNhanChuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DangKyChuyenSinhHoats">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.DangKyChuyenSinhHoat">
+              <MappingFragment StoreEntitySet="DangKyChuyenSinhHoat">
+                <ScalarProperty Name="MaPhieuDangKy" ColumnName="MaPhieuDangKy" />
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="MaSoChuyenSinhHoat" ColumnName="MaSoChuyenSinhHoat" />
+                <ScalarProperty Name="LiDo" ColumnName="LiDo" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DangKyHoatDongs">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.DangKyHoatDong">
+              <MappingFragment StoreEntitySet="DangKyHoatDong">
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="MaHoatDong" ColumnName="MaHoatDong" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoanCoSoes">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.DoanCoSo">
+              <MappingFragment StoreEntitySet="DoanCoSo">
+                <ScalarProperty Name="MaDoanCoSo" ColumnName="MaDoanCoSo" />
+                <ScalarProperty Name="TenDoanCoSo" ColumnName="TenDoanCoSo" />
+                <ScalarProperty Name="TenDCSVietTat" ColumnName="TenDCSVietTat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoanViens">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.DoanVien">
+              <MappingFragment StoreEntitySet="DoanVien">
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="HoTenDoanVien" ColumnName="HoTenDoanVien" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="DanToc" ColumnName="DanToc" />
+                <ScalarProperty Name="TonGiao" ColumnName="TonGiao" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="NoiOHienNay" ColumnName="NoiOHienNay" />
+                <ScalarProperty Name="NgayVaoDang" ColumnName="NgayVaoDang" />
+                <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
+                <ScalarProperty Name="MaSoDoan" ColumnName="MaSoDoan" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="MaChiDoan" ColumnName="MaChiDoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DongDoanPhis">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.DongDoanPhi">
+              <MappingFragment StoreEntitySet="DongDoanPhi">
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="MaSoDoanPhi" ColumnName="MaSoDoanPhi" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+                <ScalarProperty Name="NgayNop" ColumnName="NgayNop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grants">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.Grant">
+              <MappingFragment StoreEntitySet="Grant">
+                <ScalarProperty Name="GrantID" ColumnName="GrantID" />
+                <ScalarProperty Name="GrantName" ColumnName="GrantName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoatDongs">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.HoatDong">
+              <MappingFragment StoreEntitySet="HoatDong">
+                <ScalarProperty Name="MaHoatDong" ColumnName="MaHoatDong" />
+                <ScalarProperty Name="TenHoatDong" ColumnName="TenHoatDong" />
+                <ScalarProperty Name="ThoiGianBauDau" ColumnName="ThoiGianBauDau" />
+                <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
+                <ScalarProperty Name="DiaDiem" ColumnName="DiaDiem" />
+                <ScalarProperty Name="MaCapHoatDong" ColumnName="MaCapHoatDong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhenThuongKyLuatDoanViens">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.KhenThuongKyLuatDoanVien">
+              <MappingFragment StoreEntitySet="KhenThuongKyLuatDoanVien">
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="MaSoKhenThuongKyLuat" ColumnName="MaSoKhenThuongKyLuat" />
+                <ScalarProperty Name="SoQD" ColumnName="SoQD" />
+                <ScalarProperty Name="NgayQD" ColumnName="NgayQD" />
+                <ScalarProperty Name="DonVi" ColumnName="DonVi" />
+                <ScalarProperty Name="HinhThuc" ColumnName="HinhThuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhoaDaoTaos">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.KhoaDaoTao">
+              <MappingFragment StoreEntitySet="KhoaDaoTao">
+                <ScalarProperty Name="MaKhoaDaoTao" ColumnName="MaKhoaDaoTao" />
+                <ScalarProperty Name="KhoaDaoTao1" ColumnName="KhoaDaoTao" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanXets">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.NhanXet">
+              <MappingFragment StoreEntitySet="NhanXet">
+                <ScalarProperty Name="NamNhanXet" ColumnName="NamNhanXet" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="XepLoai" ColumnName="XepLoai" />
+                <ScalarProperty Name="NgayNhanXet" ColumnName="NgayNhanXet" />
+                <ScalarProperty Name="MaSoDoan" ColumnName="MaSoDoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoChuyenSinhHoats">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.SoChuyenSinhHoat">
+              <MappingFragment StoreEntitySet="SoChuyenSinhHoat">
+                <ScalarProperty Name="MaSoChuyenSinhHoat" ColumnName="MaSoChuyenSinhHoat" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoDoans">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.SoDoan">
+              <MappingFragment StoreEntitySet="SoDoan">
+                <ScalarProperty Name="MaSoDoan" ColumnName="MaSoDoan" />
+                <ScalarProperty Name="MaTheDoan" ColumnName="MaTheDoan" />
+                <ScalarProperty Name="NgayVaoDoan" ColumnName="NgayVaoDoan" />
+                <ScalarProperty Name="NoiVaoDoan" ColumnName="NoiVaoDoan" />
+                <ScalarProperty Name="NgayCapThe" ColumnName="NgayCapThe" />
+                <ScalarProperty Name="NoiCapThe" ColumnName="NoiCapThe" />
+                <ScalarProperty Name="NgayNopSo" ColumnName="NgayNopSo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoDoanPhis">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.SoDoanPhi">
+              <MappingFragment StoreEntitySet="SoDoanPhi">
+                <ScalarProperty Name="MaSoDoanPhi" ColumnName="MaSoDoanPhi" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoKhenThuongKyLuats">
+            <EntityTypeMapping TypeName="QuanLyDoanVienModel.SoKhenThuongKyLuat">
+              <MappingFragment StoreEntitySet="SoKhenThuongKyLuat">
+                <ScalarProperty Name="MaSoKhenThuongKyLuat" ColumnName="MaSoKhenThuongKyLuat" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

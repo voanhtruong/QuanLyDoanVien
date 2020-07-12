@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title - Quản lý đoàn viên</title>
+    <!--<script src="https://kit.fontawesome.com/9174ffaf18.js" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+    <link href="~/Content/css/fontawesome-free-5.13.0-web/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all">
+    <link href="~/Content/css/StyleSheet.css" rel="stylesheet" />
+    <link href="~/faviconbtc.ico" rel="icon" type="image/x-icon" />
+</head>
+<body>
+    <!--Header picture-->
+    <div class="container">
+        <div>
+            <img class="img-fluid" usemap="#reset_map" src="~/Content/Image/Login_header.png" style="width:auto;" alt="Đoàn Trường Đại học Giao thông Vận tải Phân hiệu tại TP. Hồ Chí Minh" />
+            <map name="reset_map">
+                <area alt="Đoàn Trường" shape="circle" coords="123, 53, 30" href="http://dept.utc2.edu.vn/doanthanhnien/" />
+                <area alt="Phân hiệu" shape="circle" coords="833.731, 49.408 , 33" href="http://utc2.edu.vn/" />
+            </map>
+        </div>
+
+    </div>
+
+    <!--Navigation-->
+    <nav class="navbar navbar-expand-md bg-primary navbar-light sticky-top fixed-top">
+        <div class="container">
+            <a class="navbar-brand">
+                <img src="~/Content/Image/LOGOBANTOCHUC.png" alt="QLDV UTC2" height="50" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Thông tin cá nhân", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Đăng ký hoạt động", "DangKyChuongTrinh", "DangKyChuongTrinh", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Đăng ký chuyển SH", "DangKyChuyenSinhHoat", "DangKyChuyenSinhHoat", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                   
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Quản trị</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Quản lý hoạt động</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Quản lý Đoàn Cơ sở</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Quản lý chi đoàn</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Quản lý đoàn viên</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Quản lý thu đoàn phí</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Quản lý đăng ký hoạt động</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Quản lý chuyển sinh hoạt</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="#">Báo cáo, thống kê</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Tiện ích mở rộng</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" target="_blank" id="droplist" href="http://xemdiem.utc2.edu.vn/">Tra cứu kết quả học tập</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="http://smart.utc2.edu.vn:8383/HTDRL/login.jsp;jsessionid=72EDBE7526C39527947FC079698598D8">Đánh giá rèn luyện sinh viên</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="http://nophocphi.utc2.edu.vn/">Đóng học phí</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="http://dichvusinhvien.utc2.edu.vn:85/DVSV/DangNhapSinhVien.jsp">Đăng ký dịch vụ sinh viên</a>
+                            <a class="dropdown-item" target="_blank" id="droplist" href="http://210.211.119.121:9999/Default/Login">Đăng ký nội trú Ký túc xá</a>
+                        </div>
+                    </li>
+
+                    <li class="navbar-brand">
+                        <button type="button" class="btn btn-danger nav-item">@Html.ActionLink("THOÁT", "Login", "Account")</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--Main-->
+    <main>
+        <div id="main_sub" style="background: url(~/Content/Image/b1.jpg) no-repeat; background-size: cover;">
+            <div id="wrap">
+                @RenderBody()
+            </div>
+        </div>
+        
+    </main>
+    <!--Footer-->
+    <div id="footer" class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-md-6 ">
+                <h4>Liên hệ với chúng tôi</h4>
+                <div class="col-md-12 social padding">
+                    <a href="https://www.facebook.com/thanhnienutc2/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/channel/UC5YnIEFYR6yX5MnTK4yNCOw"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:quanlydoanvien.utc2@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:0357166103"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <h5>&copy; by HT Solutions</h5>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

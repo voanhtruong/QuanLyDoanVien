@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Thông tin đoàn viên";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+    <!-- content -->
+<div id="container">
+    <div class="porduct-order-agile">
+        <form action="#" method="post">
+            @*Mã sinh viên*@
+            <div class="form-order">
+                <p>Mã sinh viên <span style="color:red">(*)</span></p>
+                <input type="text" class="form-control" name="id" placeholder="Nhập mã sinh viên" required="">
+            </div>
+            <br />
+            @*Họ và tên*@
+            <div class="form-order">
+                <p>Họ và tên <span style="color:red">(*)</span></p>
+                <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên" required="">
+            </div>
+            <br />
+            @*Giới tính*@
+            <div class="form-order">
+                <p>Giới tính</p>
+                <select class="form-control buttom">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+            </div>
+            <br />
+            @*Ngày sinh*@
+            <div class="form-order">
+                <p>Ngày sinh <span style="color:red">(*)</span></p>
+                <input type="date" class="form-control" name="birthday" placeholder="Nhập ngày sinh" required="">
+            </div>
+            <br />
+            @*Dân tộc*@
+            <div class="form-order">
+                <p>Dân tộc</p>
+                <select class="form-control buttom">
+                    <option value="Kinh">Kinh</option>
+                    <option value="Khơ me">Khơ me</option>
+                </select>
+            </div>
+            <br />
+            @*Tôn giáo*@
+            <div class="form-order">
+                <p>Tôn giáo</p>
+                <select class="form-control buttom">
+                    <option value="Không">Không</option>
+                    <option value="Phật giáo">Phật giáo</option>
+                </select>
+            </div>
+            <br />
+            @*Quê quán*@
+            <div class="form-order">
+                <p>Quê quán <span style="color:red">(*)</span></p>
+                <input type="text" class="form-control" name="queQuan" placeholder="Nhập quê quán (nhập tỉnh)" required="">
+            </div>
+            <br />
+            @*Nơi ở hiện nay*@
+            <div class="form-order">
+                <p>Nơi ở hiện nay <span style="color:red">(*)</span></p>
+                <input type="text" class="form-control" name="address" placeholder="Nhập nơi ở hiện nay (đầy đủ)" required="">
+            </div>
+            <br />
+            @*Ngày vào Đảng*@
+            <div class="form-order">
+                <p>Ngày vào Đảng</p>
+                <input type="date" class="form-control" name="dayofDang" placeholder="Nhập ngày vào Đảng">
+            </div>
+            <br />
+            @*Số điện thoại*@
+            <div class="form-order">
+                <p>Số điện thoại <span style="color:red">(*)</span></p>
+                <input type="text" class="form-control" name="phone" placeholder="Nhập số điện thoại" required="">
+            </div>
+            <br />
+            @*Mã sổ đoàn*@
+            <div class="form-order">
+                <p>Mã sổ đoàn</p>
+                <input type="text" class="form-control" name="maSoDoan" placeholder="Nhập mã sổ đoàn">
+            </div>
+            <br />
+            @*Mã chi đoàn*@
+            <div class="form-order">
+                <p>Chi đoàn <span style="color:red">(*)</span></p>
+                <input type="text" class="form-control" name="chiDoan" placeholder="Nhập chi đoàn" required="">
+            </div>
+            <br />
+
+            <button type="submit" class="btn btn-primary btn-block">Lưu</button>
+        </form>
+    </div>
+</div>
+    

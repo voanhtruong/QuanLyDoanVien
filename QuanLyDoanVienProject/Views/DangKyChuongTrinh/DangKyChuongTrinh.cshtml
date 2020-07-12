@@ -1,0 +1,37 @@
+﻿@using QuanLyDoanVienProject.Models;
+@model IEnumerable<PhieuDangKyHoatDong>
+
+@{
+    ViewBag.Title = "Đăng ký hoạt động";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="container">
+    <div>
+        @Html.Action("PhieuDangKyHoatDongPartial", "DangKyChuongTrinh")
+        <br />
+    </div>
+    <div>
+        <form action="#" method="post" style="width:50%">
+            <div class="form-order">
+                <p>Chọn chương trình, hoạt động để đăng ký</p>
+                <select class="form-control buttom" style="height:50px">
+                    <option value="">--- Chọn 1 ---</option>
+                    <option value="1">Chào đón tân sinh viên K60</option>
+                    <option value="2">Mùa hè xanh</option>
+                    <option value="3">UTC2 Tech-War</option>
+                    <option value="4">Kết cấu chịu lực</option>
+                    <option value="5">Xuân tình nguyện</option>
+                    <option value="6">Hiến máu nhân đạo</option>
+                </select>
+                <br />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+        </form>
+    </div>
+    <div>
+        <br />
+    </div>
+
+</div>
+

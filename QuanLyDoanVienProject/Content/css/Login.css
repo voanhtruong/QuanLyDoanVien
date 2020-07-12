@@ -1,0 +1,72 @@
+﻿.container > div {
+    display: flex;
+    justify-content: center;
+}
+
+#main {
+    padding: 5px 15px;
+    margin: 10px;
+}
+
+    #main h2 {
+        text-align: center;
+        margin: 0px;
+        color: #29166F;
+    }
+
+    #main p {
+        text-align: center;
+        margin: 0px;
+        color: #29166F;
+    }
+
+    #main hr {
+        margin: 5px;
+    }
+
+#slider {
+    margin: 0px;
+    padding: 1px 15px;
+}
+
+.carousel-inner img {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+.social a {
+    font-size: 1em;
+    padding: 1rem;
+}
+
+.fa-youtube {
+    color: red;
+}
+
+.fa-envelope {
+    color: #c60000;
+}
+
+.fa-phone {
+    color: greenyellow;
+}
+
+#footer > div {
+    background: #e8e8e8;
+    padding: 5px;
+}
+
+.carousel-control-prev {
+    width: 3%;
+}
+
+.carousel-control-next {
+    width: 3%;
+}
+
+.carousel-indicators {
+    margin-bottom: 0rem;
+}

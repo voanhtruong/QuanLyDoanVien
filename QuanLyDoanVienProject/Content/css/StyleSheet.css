@@ -1,0 +1,44 @@
+﻿.navbar {
+    background: #0094ff !important;
+}
+
+    .navbar li a {
+        color: white !important;
+    }
+
+        .navbar li a:hover {
+            color: #00042b !important;
+            transition: 0.4s;
+        }
+
+#droplist {
+    background: #0094ff;
+    margin-top: 0px;
+}
+
+.container > div {
+    display: flex;
+    justify-content: center;
+}
+
+.social a {
+    font-size: 1em;
+    padding: 1rem;
+}
+
+.fa-youtube {
+    color: red;
+}
+
+.fa-envelope {
+    color: #c60000;
+}
+
+.fa-phone {
+    color: greenyellow;
+}
+
+#footer > div {
+    background: #e8e8e8;
+    padding: 5px;
+}

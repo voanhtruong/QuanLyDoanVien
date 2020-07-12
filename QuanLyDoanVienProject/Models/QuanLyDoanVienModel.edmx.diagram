@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75b4ae54814d424d9a22bf3ae9280924" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.Account" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.CapHoatDong" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.ChiDoan" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.ChucVu" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.ChucVuChiDoan" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.ChucVuDoanCoSo" Width="1.5" PointX="10.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.DangKyChuyenSinhHoat" Width="1.5" PointX="13.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.DangKyHoatDong" Width="1.5" PointX="10.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.DoanCoSo" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.DoanVien" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.DongDoanPhi" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.Grant" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.HoatDong" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.KhenThuongKyLuatDoanVien" Width="1.5" PointX="13.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.KhoaDaoTao" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.NhanXet" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.SoChuyenSinhHoat" Width="1.5" PointX="11.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.SoDoan" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.SoDoanPhi" Width="1.5" PointX="8.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyDoanVienModel.SoKhenThuongKyLuat" Width="1.5" PointX="11.25" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_Account_Grant" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DoanVien_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_HoatDong_CapHoatDong" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChiDoan_DoanCoSo" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChiDoan_MaKhoaDaoTao" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChucVuChiDoan_ChiDoan" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DoanVien_ChiDoan" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChucVuChiDoan_ChucVu" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChucVuDoanCoSo_ChucVu" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChucVuChiDoan_DoanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChucVuDoanCoSo_DoanCoSo" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_ChucVuDoanCoSo_DoanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DangKyChuyenSinhHoat_DoanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DangKyChuyenSinhHoat_SoChuyenSinhHoat" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DangKyHoatDong_DoanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DangKyHoatDong_HoatDong" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DoanVien_SoDoan" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DongDoanPhi_DoanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_KhenThuongKyLuatDoanVien_DoanVien" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_DongDoanPhi_SoDoanPhi" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_KhenThuongKyLuatDoanVien_KTKL" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyDoanVienModel.FK_NhanXet_SoDoan" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "DongDoanPhi";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="container">
+    <div>
+        <form action="#" method="post">
+            @*<h2>Xin chào @Session["AccountID"].ToString()</h2>
+                <hr />*@
+            @*Giới tính*@
+            <div class="form-order">
+                <p>Chọn chương trình</p>
+                <select class="form-control buttom">
+                    <option value="Khác">Khác</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                <br />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Xác nhận</button>
+        </form>
+    </div>
+    <div>
+        <h2>Dong doan phi</h2>
+    </div>
+
+</div>

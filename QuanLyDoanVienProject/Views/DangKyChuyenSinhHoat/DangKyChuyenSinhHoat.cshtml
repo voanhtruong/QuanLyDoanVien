@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "DangKyChuyenSinhHoat";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div class="container">
+    <div>
+        @Html.Action("DangKyChuyenSinhHoatPartial", "DangKyChuyenSinhHoat")
+        <br />
+    </div>
+    <div>
+        <form action="#" method="post" style="width:50%">
+            <div class="form-order">
+                <p>Chọn lý do chuyển sinh hoạt</p>
+                <select class="form-control buttom" style="height:50px">
+                    <option value="">--- Chọn 1 ---</option>
+                    <option value="1">Ra trường</option>
+                    <option value="2">Chuyển trường</option>
+                    <option value="3">Thôi học</option>
+                </select>
+                <br />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+        </form>
+    </div>
+    <div>
+        <br />
+    </div>
+
+</div>
