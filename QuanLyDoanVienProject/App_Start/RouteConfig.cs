@@ -12,13 +12,12 @@ namespace QuanLyDoanVienProject
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-
             routes.MapRoute(
-                   name: "Login",
-                   url: "Verify",
-                   defaults: new { controller = "Account", action = "Verify", id = UrlParameter.Optional }
-               );
+                  name: "Login",
+                  url: "Verify",
+                  defaults: new { controller = "Account", action = "Verify", id = UrlParameter.Optional }
+              );
+            
             routes.MapRoute(
                    name: "thong tin ca nhan",
                    url: "infor",

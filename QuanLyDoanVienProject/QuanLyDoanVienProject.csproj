@@ -1970,10 +1970,11 @@
     <Content Include="Views\Account\Error.cshtml" />
     <Content Include="Views\DangKyChuongTrinh\DangKyChuongTrinh.cshtml" />
     <Content Include="Views\DongDoanPhi\DongDoanPhi.cshtml" />
-    <Content Include="Views\DoanVien\DoanVienPartialHieuChinhThongTin.cshtml" />
     <Content Include="Views\DangKyChuongTrinh\PhieuDangKyHoatDongPartial.cshtml" />
     <Content Include="Views\DangKyChuyenSinhHoat\DangKyChuyenSinhHoat.cshtml" />
     <Content Include="Views\DangKyChuyenSinhHoat\DangKyChuyenSinhHoatPartial.cshtml" />
+    <Content Include="Views\DoanVien\DoanVien.cshtml" />
+    <Content Include="Views\Account\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

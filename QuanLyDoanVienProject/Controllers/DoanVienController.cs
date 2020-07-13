@@ -12,10 +12,12 @@ namespace QuanLyDoanVienProject.Controllers
         // GET: DoanVien
         // Sử dụng Partial view
         QuanLyDoanVienEntities db = new QuanLyDoanVienEntities();
-        [ChildActionOnly]
-        public ActionResult DoanVienPartial()
+        //[ChildActionOnly]
+        public ActionResult DoanVien()
         {
-            return PartialView();
+            var listDoanVien = from dv in db.DoanViens where dv.MaSinhVien=="5851071082" select dv;
+            DoanVien doanvien = listDoanVien.FirstOrDefault();
+            return View(doanvien);
         }
     }
 }

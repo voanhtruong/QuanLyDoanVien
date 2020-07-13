@@ -1,23 +1,24 @@
-﻿
+﻿@model QuanLyDoanVienProject.Models.DoanVien
+
 @{
-    ViewBag.Title = "Thông tin đoàn viên";
+    ViewBag.Title = "Đoàn viên";
     Layout = "~/Views/Layout/HomeLayout.cshtml";
 }
 
-    <!-- content -->
+<!-- content -->
 <div id="container">
     <div class="porduct-order-agile">
         <form action="#" method="post">
             @*Mã sinh viên*@
             <div class="form-order">
                 <p>Mã sinh viên <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="id" placeholder="Nhập mã sinh viên" required="" disabled>
+                <input type="text" class="form-control" name="id" placeholder="Nhập mã sinh viên" required="" value="@Model.MaSinhVien" disabled>
             </div>
             <br />
             @*Họ và tên*@
             <div class="form-order">
                 <p>Họ và tên <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên" required="" disabled>
+                <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên" required="" value="@Model.HoTenDoanVien" disabled>
             </div>
             <br />
             @*Giới tính*@
@@ -32,7 +33,7 @@
             @*Ngày sinh*@
             <div class="form-order">
                 <p>Ngày sinh <span style="color:red">(*)</span></p>
-                <input type="date" class="form-control" name="birthday" placeholder="Nhập ngày sinh" required="" disabled>
+                <input type="date" class="form-control" name="birthday" placeholder="Nhập ngày sinh" required="" value="@Model.NgaySinh" disabled>
             </div>
             <br />
             @*Dân tộc*@
@@ -80,13 +81,13 @@
             @*Mã sổ đoàn*@
             <div class="form-order">
                 <p>Mã sổ đoàn</p>
-                <input type="text" class="form-control" name="maSoDoan" placeholder="Nhập mã sổ đoàn" disabled>
+                <input type="text" class="form-control" name="maSoDoan" placeholder="Nhập mã sổ đoàn" value="@Model.MaSoDoan" disabled>
             </div>
             <br />
             @*Mã chi đoàn*@
             <div class="form-order">
                 <p>Chi đoàn <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="chiDoan" placeholder="Nhập chi đoàn" required="" disabled>
+                <input type="text" class="form-control" name="chiDoan" placeholder="Nhập chi đoàn" value="@Model.MaChiDoan" required="" disabled>
             </div>
             <br />
 
@@ -94,4 +95,3 @@
         </form>
     </div>
 </div>
-    
