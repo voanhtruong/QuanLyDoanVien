@@ -1,0 +1,53 @@
+﻿@using QuanLyDoanVienProject.Models;
+@model List<PhieuDangKyHoatDong>
+
+@{
+    ViewBag.Title = "XemChuongTrinh";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@if (Model.Count == 0)
+{
+<center>
+    <h3 style="text-align:center"><br />BẠN CHƯA ĐĂNG KÝ CHƯƠNG TRÌNH<br /><br /></h3>
+    @Html.ActionLink("Đăng ký ngay", "DangKyChuongTrinh", "DangKyChuongTrinh", new { @class = "btn btn-primary" })
+    <br />
+    <br />
+</center>
+}
+else
+{
+    <h3 style="text-align:center"><br />DANH SÁCH ĐĂNG KÝ THAM GIA CHƯƠNG TRÌNH<br /><br /></h3>
+    <table class="table">
+        <tr>
+            <th>TÊN HOẠT ĐỘNG</th>
+            <th>NGÀY BẮT ĐẦU</th>
+            <th>NGÀY KẾT THÚC</th>
+            <th>ĐỊA ĐIỂM</th>
+            <th>NGÀY ĐĂNG KÝ</th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenHoatDong</td>
+                <td>@item.NgayBatDau.ToShortDateString()</td>
+                <td>@item.NgayKetThuc.ToShortDateString()</td>
+                <td>@item.DiaDiem</td>
+                <td>@item.NgayDangKy.ToShortDateString()</td>
+                <td>@Html.ActionLink("Hủy đăng ký", "XoaDangKy", new { @MaHoatDong = item.MaHoatDong })</td>
+            </tr>
+        }
+    </table>
+    <center class="divLuuDangKy">
+        @using (Html.BeginForm("LuuDangKy", "DangKyChuongTrinh"))
+        {
+            <input style="height:40px;width:120px" class="btn btn-success" type="submit" value="Lưu đăng ký" />
+            @Html.ActionLink("Đăng ký thêm", "DangKyChuongTrinh", "DangKyChuongTrinh", new { @class = "btn btn-primary" })
+        }
+
+    </center>
+
+    <br />
+}
+

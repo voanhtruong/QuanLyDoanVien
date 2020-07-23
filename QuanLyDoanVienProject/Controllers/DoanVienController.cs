@@ -15,13 +15,10 @@ namespace QuanLyDoanVienProject.Controllers
         //[ChildActionOnly]
         public ActionResult DoanVien()
         {
+            
             var listDoanVien = from dv in db.DoanViens where dv.MaSinhVien=="5851071082" select dv;
             DoanVien doanvien = listDoanVien.FirstOrDefault();
             return View(doanvien);
-        }
-        public ActionResult DoanVien1()
-        {
-            return View();
         }
     }
 }

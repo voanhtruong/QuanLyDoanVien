@@ -7,22 +7,23 @@ namespace QuanLyDoanVienProject.Models
 {
     public class PhieuDangKyHoatDong
     {
-        public int maHoatDong { get; set; }
-        public string tenHoatDong { get; set; }
-        public System.DateTime ngayBatDau { get; set; }
-        public System.DateTime ngayKetThuc { get; set; }
-        public string diaDiem { get; set; }
-        public System.DateTime ngayDangKy { get; set; }
-        public PhieuDangKyHoatDong(int imaHoatDong)
+        public int MaHoatDong { get; set; }
+        public string TenHoatDong { get; set; }
+        public DateTime NgayBatDau { get; set; }
+        public DateTime NgayKetThuc { get; set; }
+        public string DiaDiem { get; set; }
+        public DateTime NgayDangKy { get; set; }
+        public PhieuDangKyHoatDong(int iMaHoatDong)
         {
             using (QuanLyDoanVienEntities db = new QuanLyDoanVienEntities())
             {
-                HoatDong hd = db.HoatDongs.Single(n => n.MaHoatDong == imaHoatDong);
-                this.maHoatDong = imaHoatDong;
-                this.tenHoatDong = hd.TenHoatDong;
-                this.ngayBatDau = hd.ThoiGianBauDau.Value;
-                this.ngayKetThuc = hd.ThoiGianKetThuc.Value;
-                this.diaDiem = hd.DiaDiem;
+                HoatDong hd = db.HoatDongs.Single(n => n.MaHoatDong == iMaHoatDong);
+                this.MaHoatDong = iMaHoatDong;
+                this.TenHoatDong = hd.TenHoatDong;
+                this.NgayBatDau = hd.ThoiGianBauDau.Value;
+                this.NgayKetThuc = hd.ThoiGianKetThuc.Value;
+                this.DiaDiem = hd.DiaDiem;
+                this.NgayDangKy = DateTime.Now;
             }
         }
         public PhieuDangKyHoatDong()

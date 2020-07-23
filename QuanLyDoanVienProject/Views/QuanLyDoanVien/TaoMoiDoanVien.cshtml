@@ -1,0 +1,195 @@
+﻿@model QuanLyDoanVienProject.Models.DoanVien
+
+@{
+    ViewBag.Title = "Thêm đoàn viên mới";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>Thêm đoàn viên mới</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+     
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaSinhVien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.MaSinhVien, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaSinhVien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoTenDoanVien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.HoTenDoanVien, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HoTenDoanVien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <select name="GioiTinh" id="gioitinh" class="form-control buttom" style="margin:0px; padding: .375rem .75rem">
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <input name="NgaySinh" type="date"/>
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DanToc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <select name="DanToc" id="dantoc" class="custom-select" style="margin:0px; padding: .375rem .75rem">
+                    <option selected value="Kinh">Kinh</option>
+                    <option value="Tày">Tày</option>
+                    <option value="Thái">Thái</option>
+                    <option value="Mường">Mường</option>
+                    <option value="Hoa">Hoa</option>
+                    <option value="Khmer">Khmer</option>
+                    <option value="Nùng">Nùng</option>
+                    <option value="HMông">HMông</option>
+                    <option value="Dao">Dao</option>
+                    <option value="Gia-rai">Gia-rai</option>
+                    <option value="Ê-đê">Ê-đê</option>
+                    <option value="Ba-na">Ba-na</option>
+                    <option value="Sán Chay">Sán Chay</option>
+                    <option value="Chăm">Chăm</option>
+                    <option value="Xê-đăng">Xê-đăng</option>
+                    <option value="Sán Dìu">Sán Dìu</option>
+                    <option value="Hrê">Hrê</option>
+                    <option value="Cơ-ho">Cơ-ho</option>
+                    <option value="Ra Glay">Ra Glay</option>
+                    <option value="Thổ">Thổ</option>
+                    <option value="Xtiêng">Xtiêng</option>
+                    <option value="Khơ Mú">Khơ Mú</option>
+                    <option value="Bru-Vân Kiều">Bru-Vân Kiều</option>
+                    <option value="Khơ me">Giáy</option>
+                    <option value="Khơ me">Cơ tu</option>
+                    <option value="Khơ me">Gié-Triêng</option>
+                    <option value="Khơ me">Ta Ôi</option>
+                    <option value="Khơ me">Mạ</option>
+                    <option value="Khơ me">Co</option>
+                    <option value="Khơ me">Chơ Ro</option>
+                    <option value="Khơ me">Hà Nhì</option>
+                    <option value="Khơ me">Xinh Mun</option>
+                    <option value="Khơ me">Chu-ru</option>
+                    <option value="Khơ me">Lào</option>
+                    <option value="Khơ me">La Chí</option>
+                    <option value="Khơ me">Phù Lá</option>
+                    <option value="Khơ me">La Hủ</option>
+                    <option value="Khơ me">Kháng</option>
+                    <option value="Khơ me">Lự</option>
+                    <option value="Khơ me">Pà Thẻn</option>
+                    <option value="Khơ me">Lô Lô</option>
+                    <option value="Khơ me">Chứt</option>
+                    <option value="Khơ me">Mảng</option>
+                    <option value="Khơ me">Cờ lao</option>
+                    <option value="Khơ me">Bố Y</option>
+                    <option value="Khơ me">La Ha</option>
+                    <option value="Khơ me">Cống</option>
+                    <option value="Khơ me">Ngái</option>
+                    <option value="Khơ me">Si La</option>
+                    <option value="Khơ me">Pu Péo</option>
+                    <option value="Khơ me">Brâu</option>
+                    <option value="Khơ me">Rơ Măm</option>
+                    <option value="Khơ me">Ơ Đu</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TonGiao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <select name="TonGiao" id="tongiao" class="custom-select" style="margin:0px; padding: .375rem .75rem">
+                    <option value="Không">Không</option>
+                    <option value="Phật giáo">Phật giáo</option>
+                    <option value="Công giáo">Công giáo</option>
+                    <option value="Tin Lành">Tin Lành</option>
+                    <option value="Hồi giáo">Hồi giáo</option>
+                    <option value="Cao Đài">Cao Đài</option>
+                    <option value="Hòa Hảo">Hòa Hảo</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QueQuan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.QueQuan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QueQuan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoiOHienNay, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.NoiOHienNay, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoiOHienNay, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayVaoDang, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                <input name="NgayVaoDang" type="date" />
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaSoDoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("MaSoDoan", null, new { @class="form-control"})
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("AccountID", null, new { @class = "form-control" })
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaChiDoan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("MaChiDoan", null, new { @class = "form-control" })
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Xem danh sách đoàn viên", "QuanLyDoanVien")
+</div>

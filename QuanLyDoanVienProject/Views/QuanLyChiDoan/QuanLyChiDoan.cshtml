@@ -1,0 +1,26 @@
+﻿@using QuanLyDoanVienProject.Models
+@model IEnumerable<ChiDoan>
+
+@{
+    ViewBag.Title = "QuanLyChiDoan";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 6);
+}
+<center>
+    <h3>DANH SÁCH CHI ĐOÀN</h3>
+    <br />
+    <br />
+    @webGrid.GetHtml(
+        tableStyle:"gridTable",
+        headerStyle:"gridHead",
+        footerStyle: "gridFooter",
+        rowStyle:"gridRow",
+        alternatingRowStyle:"gridAltRow",
+        columns: webGrid.Columns(
+            webGrid.Column("MaChiDoan", "Mã chi đoàn"),
+            webGrid.Column("TenChiDoan", "Tên chi đoàn"),
+            webGrid.Column("TenVietTat", "Tên chi đoàn viết tắt"),
+            webGrid.Column("MaDoanCoSo", "Mã Đoàn cơ sở"),
+            webGrid.Column("MaKhoaDaoTao", "Mã khóa đào tạo")
+            ))
+</center>

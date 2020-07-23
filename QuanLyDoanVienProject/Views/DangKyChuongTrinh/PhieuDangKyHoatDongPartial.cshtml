@@ -1,6 +1,9 @@
-﻿<div class="phieuDangKyHoatDong">
+﻿@*Dùng viewbag tính tổng số lượng chương trình đã đăng ký*@
+
+
+<div class="phieuDangKyHoatDong">
     <p>
-        <a href="@Url.Action("DangKyChuongTrinh","DangKyChuongTrinh")" class="navbar-brand">Xem danh sách hoạt động đã đăng ký</a>
+        <a href="@Url.Action("XemChuongTrinh","DangKyChuongTrinh")" class="navbar-brand">Xem danh sách hoạt động đã đăng ký</a>
         <br />
         <span style="color:red;text-align:center;padding-left:35px">>> -- Đã đăng ký <span>@ViewBag.TongSoLuong</span> hoat động -- <<</span>
         <hr />

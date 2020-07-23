@@ -13,8 +13,10 @@ namespace QuanLyDoanVienProject.Controllers
         //lay phieu dang ky
         public List<PhieuDangKyHoatDong> LayPhieuDangKyHoatDong()
         {
-            List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = Session["PhieuDangKyHoatDong"] as List<PhieuDangKyHoatDong>;
-            if (listPhieuDangKyHoatDong == null)
+            //List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = Session["PhieuDangKyHoatDong"] as List<PhieuDangKyHoatDong>;
+            //if (listPhieuDangKyHoatDong == null)
+
+            if (!(Session["PhieuDangKyHoatDong"] is List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong))
             {
                 //neu session phieu rong, khoi tao phieu
                 listPhieuDangKyHoatDong = new List<PhieuDangKyHoatDong>();
@@ -22,34 +24,37 @@ namespace QuanLyDoanVienProject.Controllers
             }
             return listPhieuDangKyHoatDong;
         }
-        //them phieu dang ky
-        public ActionResult ThemPhieuDangKy(int maHoatDong, string strURL)
+        //them phieu dang ky (load lai trang)
+        public ActionResult ThemPhieuDangKy(int MaHoatDong, string strURL)
         {
             // kiem tra hoat dong co trong csdl hay khong
-            HoatDong hd = db.HoatDongs.SingleOrDefault(n => n.MaHoatDong == maHoatDong);
+            HoatDong hd = db.HoatDongs.SingleOrDefault(n => n.MaHoatDong == MaHoatDong);
             if (hd == null)
             {
+                //trang duong dan khong hop le
                 Response.StatusCode = 404;
                 return null;
             }
+
             //tao list phieu dang ky
             List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = LayPhieuDangKyHoatDong();
+
             //neu hoat dong da ton tai trong phieu dang ky
-            PhieuDangKyHoatDong hdCheck = listPhieuDangKyHoatDong.SingleOrDefault(n => n.maHoatDong == maHoatDong);
+            PhieuDangKyHoatDong hdCheck = listPhieuDangKyHoatDong.SingleOrDefault(n => n.MaHoatDong == MaHoatDong);
             if (hdCheck != null)
             {
-                hdCheck.ngayDangKy = DateTime.Now;
+                hdCheck.NgayDangKy = DateTime.Now;
                 return Redirect(strURL);
             }
-            PhieuDangKyHoatDong ItemPhieuDangKy = new PhieuDangKyHoatDong(maHoatDong);
+            PhieuDangKyHoatDong ItemPhieuDangKy = new PhieuDangKyHoatDong(MaHoatDong);
             listPhieuDangKyHoatDong.Add(ItemPhieuDangKy);
             return Redirect(strURL);
 
         }
+        //tinh tong so luong chuong trinh da dang ky
         public double TinhTongSoLuongChuongTrinh()
         {
-            List<PhieuDangKyHoatDong> listPhieuDangKy = Session["PhieuDangKyHoatDong"] as List<PhieuDangKyHoatDong>;
-            if (listPhieuDangKy == null)
+            if (!(Session["PhieuDangKyHoatDong"] is List<PhieuDangKyHoatDong> listPhieuDangKy))
             {
                 return 0;
             }
@@ -76,6 +81,62 @@ namespace QuanLyDoanVienProject.Controllers
             }
             ViewBag.TongSoLuong = TinhTongSoLuongChuongTrinh();
             return PartialView();
+        }
+        public ActionResult XemChuongTrinh()
+        {
+            List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = LayPhieuDangKyHoatDong();
+            return View(listPhieuDangKyHoatDong);
+        }
+        public ActionResult XoaDangKy(int MaHoatDong)
+        {
+            //kiem tra sestion Phieu dang ky hoat dong ton tai hay chua
+            if (Session["PhieuDangKyHoatDong"] == null){
+                return RedirectToAction("DangKyChuongTrinh");
+            }
+
+            //kiem tra hoat dong co ton tai trong csdl hay khong
+            HoatDong hd = db.HoatDongs.SingleOrDefault(n => n.MaHoatDong == MaHoatDong);
+            if (hd == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+
+            //lay list hoat dong tu sestion
+            List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = LayPhieuDangKyHoatDong();
+
+            //kiem tra hoat dong co nam trong phieu dang ky hay khong
+            PhieuDangKyHoatDong hdCheck = listPhieuDangKyHoatDong.SingleOrDefault(n => n.MaHoatDong == MaHoatDong);
+            if (hdCheck == null)
+            {
+                return RedirectToAction("DangKyChuongTrinh");
+            }
+            //xoa hoat dong da dang ky
+            listPhieuDangKyHoatDong.Remove(hdCheck);
+
+            return RedirectToAction("XemChuongTrinh");
+        }
+        public ActionResult LuuDangKy(DoanVien dv)
+        {
+            //kiem tra sestion Phieu dang ky hoat dong ton tai hay chua
+            if (Session["PhieuDangKyHoatDong"] == null)
+            {
+                return RedirectToAction("DangKyChuongTrinh");
+            }
+
+            DoanVien doanVien = new DoanVien();
+            Account ac = Session["AccountID"] as Account;
+
+            //luu dang ky
+            DangKyHoatDong dangKy = new DangKyHoatDong();
+            
+            
+            dangKy.MaSinhVien = ac.AccountID;
+            dangKy.MaHoatDong = 2;
+            dangKy.NgayDangKy = DateTime.Now;
+            db.DangKyHoatDongs.Add(dangKy);
+            
+            return View();
         }
     }
 }

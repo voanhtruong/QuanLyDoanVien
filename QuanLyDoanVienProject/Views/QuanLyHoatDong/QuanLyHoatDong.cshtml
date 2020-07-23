@@ -1,0 +1,28 @@
+﻿@using QuanLyDoanVienProject.Models
+@model IEnumerable<HoatDong>
+
+@{
+    //khoi tao control webgrid
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 6);
+    ViewBag.Title = "QuanLyHoatDong";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<center>
+    <h3>DANH SÁCH CÁC HOẠT ĐỘNG</h3>
+    <br />
+    <br />
+    @webGrid.GetHtml(
+        tableStyle:"gridTable",
+        headerStyle:"gridHead",
+        footerStyle: "gridFooter",
+        rowStyle:"gridRow",
+        alternatingRowStyle:"gridAltRow",
+        columns: webGrid.Columns(
+            webGrid.Column("MaHoatDong", "Mã hoạt động"),
+            webGrid.Column("TenHoatDong", "Tên hoạt động"),
+            webGrid.Column("ThoiGianBauDau", "Thời gian bắt đầu"),
+            webGrid.Column("ThoiGianKetThuc", "Thời gian kết thúc"),
+            webGrid.Column("DiaDiem", "Địa điểm tổ chức"),
+            webGrid.Column("MaCapHoatDong", "Mã cấp hoạt động")
+            ))
+</center>

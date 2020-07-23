@@ -8,7 +8,7 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Search" disabled value="@item.TenHoatDong">
                 <div class="input-group-append">
-                    <button style="margin:0px; padding: .375rem .75rem" class="btn btn-success" type="submit">Đăng ký</button>
+                    <a href="@Url.Action("ThemPhieuDangKy","DangKyChuongTrinh", new {@MaHoatDong=item.MaHoatDong,@strURL=Request.Url.ToString() })" style="margin:0px; padding: .375rem .75rem" class="btn btn-success">Đăng ký</a>
                 </div>
             </div>
         </div>

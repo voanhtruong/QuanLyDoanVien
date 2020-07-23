@@ -1,0 +1,36 @@
+﻿@using QuanLyDoanVienProject.Models
+@model IEnumerable<DoanVien>
+
+@{
+    ViewBag.Title = "QuanLyDoanVien";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 6);
+}
+<center>
+    <h3>DANH SÁCH ĐOÀN VIÊN</h3>
+    <br />
+    <br />
+    @webGrid.GetHtml(
+    tableStyle:"gridTable",
+    headerStyle:"gridHead",
+    footerStyle: "gridFooter",
+    rowStyle:"gridRow",
+    alternatingRowStyle:"gridAltRow",
+    columns: webGrid.Columns(
+        webGrid.Column("MaSinhVien", "Mã sinh viên"),
+        webGrid.Column("HoTenDoanVien", "Họ tên đoàn viên"),
+        webGrid.Column("GioiTinh", "Giới tính"),
+        webGrid.Column("NgaySinh", "Ngày sinh"),
+        webGrid.Column("DanToc", "Dân tộc"),
+        webGrid.Column("TonGiao", "Tôn giáo"),
+        webGrid.Column("QueQuan", "Quê quán"),
+        webGrid.Column("NoiOHienNay", "Nơi ở hiện nay"),
+        webGrid.Column("NgayVaoDang", "Ngày vào Đảng"),
+        webGrid.Column("SoDienThoai", "Số điện thoại"),
+        webGrid.Column("MaSoDoan", "Mã sổ đoàn"),
+        webGrid.Column("AccountID", "Mã tài khoản")
+        ))
+
+</center>
+
+
