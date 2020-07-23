@@ -11,7 +11,7 @@ namespace QuanLyDoanVienProject.Controllers
     {
         QuanLyDoanVienEntities db = new QuanLyDoanVienEntities();
         //lay phieu dang ky
-        public List<PhieuDangKyHoatDong> layPhieuDangKyHoatDong()
+        public List<PhieuDangKyHoatDong> LayPhieuDangKyHoatDong()
         {
             List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = Session["PhieuDangKyHoatDong"] as List<PhieuDangKyHoatDong>;
             if (listPhieuDangKyHoatDong == null)
@@ -23,7 +23,7 @@ namespace QuanLyDoanVienProject.Controllers
             return listPhieuDangKyHoatDong;
         }
         //them phieu dang ky
-        public ActionResult themPhieuDangKy(int maHoatDong, string strURL)
+        public ActionResult ThemPhieuDangKy(int maHoatDong, string strURL)
         {
             // kiem tra hoat dong co trong csdl hay khong
             HoatDong hd = db.HoatDongs.SingleOrDefault(n => n.MaHoatDong == maHoatDong);
@@ -33,7 +33,7 @@ namespace QuanLyDoanVienProject.Controllers
                 return null;
             }
             //tao list phieu dang ky
-            List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = layPhieuDangKyHoatDong();
+            List<PhieuDangKyHoatDong> listPhieuDangKyHoatDong = LayPhieuDangKyHoatDong();
             //neu hoat dong da ton tai trong phieu dang ky
             PhieuDangKyHoatDong hdCheck = listPhieuDangKyHoatDong.SingleOrDefault(n => n.maHoatDong == maHoatDong);
             if (hdCheck != null)
@@ -58,7 +58,13 @@ namespace QuanLyDoanVienProject.Controllers
         // GET: DangKyChuongTrinh
         public ActionResult DangKyChuongTrinh()
         {
+            var hoatDongs = db.HoatDongs;
+            ViewBag.listHoatDong = hoatDongs;
             return View();
+        }
+        public ActionResult DangKyhoatDongPartial()
+        {
+            return PartialView();
         }
 
         public ActionResult PhieuDangKyHoatDongPartial()

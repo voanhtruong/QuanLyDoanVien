@@ -19,5 +19,9 @@ namespace QuanLyDoanVienProject.Controllers
             DoanVien doanvien = listDoanVien.FirstOrDefault();
             return View(doanvien);
         }
+        public ActionResult DoanVien1()
+        {
+            return View();
+        }
     }
 }

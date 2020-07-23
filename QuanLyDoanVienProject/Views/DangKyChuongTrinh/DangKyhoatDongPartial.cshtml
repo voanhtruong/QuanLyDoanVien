@@ -1,0 +1,16 @@
+﻿@using QuanLyDoanVienProject.Models;
+@model IEnumerable<HoatDong>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search" disabled value="@item.TenHoatDong">
+                <div class="input-group-append">
+                    <button style="margin:0px; padding: .375rem .75rem" class="btn btn-success" type="submit">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

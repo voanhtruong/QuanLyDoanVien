@@ -6,92 +6,176 @@
 }
 
 <!-- content -->
-<div id="container">
-    <div class="porduct-order-agile">
-        <form action="#" method="post">
-            @*Mã sinh viên*@
-            <div class="form-order">
-                <p>Mã sinh viên <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="id" placeholder="Nhập mã sinh viên" required="" value="@Model.MaSinhVien" disabled>
-            </div>
+<div class="container">
+        <form action="#" method="post" @*class="was-validated"*@>
             <br />
-            @*Họ và tên*@
-            <div class="form-order">
-                <p>Họ và tên <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên" required="" value="@Model.HoTenDoanVien" disabled>
-            </div>
-            <br />
-            @*Giới tính*@
-            <div class="form-order">
-                <p>Giới tính</p>
-                <select class="form-control buttom">
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
-                </select>
-            </div>
-            <br />
-            @*Ngày sinh*@
-            <div class="form-order">
-                <p>Ngày sinh <span style="color:red">(*)</span></p>
-                <input type="date" class="form-control" name="birthday" placeholder="Nhập ngày sinh" required="" value="@Model.NgaySinh" disabled>
-            </div>
-            <br />
-            @*Dân tộc*@
-            <div class="form-order">
-                <p>Dân tộc</p>
-                <select class="form-control buttom">
-                    <option value="Kinh">Kinh</option>
-                    <option value="Khơ me">Khơ me</option>
-                </select>
-            </div>
-            <br />
-            @*Tôn giáo*@
-            <div class="form-order">
-                <p>Tôn giáo</p>
-                <select class="form-control buttom">
-                    <option value="Không">Không</option>
-                    <option value="Phật giáo">Phật giáo</option>
-                </select>
-            </div>
-            <br />
-            @*Quê quán*@
-            <div class="form-order">
-                <p>Quê quán <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="queQuan" placeholder="Nhập quê quán (nhập tỉnh)" required="">
-            </div>
-            <br />
-            @*Nơi ở hiện nay*@
-            <div class="form-order">
-                <p>Nơi ở hiện nay <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="address" placeholder="Nhập nơi ở hiện nay (đầy đủ)" required="">
-            </div>
-            <br />
-            @*Ngày vào Đảng*@
-            <div class="form-order">
-                <p>Ngày vào Đảng</p>
-                <input type="date" class="form-control" name="dayofDang" placeholder="Nhập ngày vào Đảng">
-            </div>
-            <br />
-            @*Số điện thoại*@
-            <div class="form-order">
-                <p>Số điện thoại <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="phone" placeholder="Nhập số điện thoại" required="">
-            </div>
-            <br />
-            @*Mã sổ đoàn*@
-            <div class="form-order">
-                <p>Mã sổ đoàn</p>
-                <input type="text" class="form-control" name="maSoDoan" placeholder="Nhập mã sổ đoàn" value="@Model.MaSoDoan" disabled>
-            </div>
-            <br />
-            @*Mã chi đoàn*@
-            <div class="form-order">
-                <p>Chi đoàn <span style="color:red">(*)</span></p>
-                <input type="text" class="form-control" name="chiDoan" placeholder="Nhập chi đoàn" value="@Model.MaChiDoan" required="" disabled>
-            </div>
-            <br />
+            <div class="row">
+                @*Mã sinh viên*@
+                <div class="form-order col">
+                    <label for="msv">Mã sinh viên <span style="color:red">(*)</span></label>
+                    <input id="msv" type="text" class="form-control" name="id" placeholder="Nhập mã sinh viên" required value="@Model.MaSinhVien" disabled>
+                    <br />
+                </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Lưu</button>
+                @*Họ và tên*@
+                <div class="form-order col">
+                    <label for="hoten">Họ và tên <span style="color:red">(*)</span></label>
+                    <input id="hoten" type="text" class="form-control" name="name" placeholder="Nhập họ và tên" required value="@Model.HoTenDoanVien" disabled>
+                    <br />
+                </div>
+
+
+                @*Giới tính*@
+                <div class="form-order col">
+                    <label for="gioitinh">Giới tính</label>
+                    <select id="gioitinh" class="form-control buttom" style="margin:0px; padding: .375rem .75rem">
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                    </select>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                @*Ngày sinh*@
+                <div class="form-order col">
+                    <label for="ngaysinh">Ngày sinh <span style="color:red">(*)</span></label>
+                    <input id="ngaysinh" type="text" class="form-control" name="birthday" placeholder="Nhập ngày sinh" required value="@Model.NgaySinh" disabled>
+                    <br />
+                </div>
+                
+                @*Dân tộc*@
+                <div class="form-order col">
+                    <label for="dantoc">Dân tộc</label>
+                    <select id="dantoc" class="custom-select" style="margin:0px; padding: .375rem .75rem">
+                        <option selected value="Kinh">Kinh</option>
+                        <option value="Tày">Tày</option>
+                        <option value="Thái">Thái</option>
+                        <option value="Mường">Mường</option>
+                        <option value="Hoa">Hoa</option>
+                        <option value="Khmer">Khmer</option>
+                        <option value="Nùng">Nùng</option>
+                        <option value="HMông">HMông</option>
+                        <option value="Dao">Dao</option>
+                        <option value="Gia-rai">Gia-rai</option>
+                        <option value="Ê-đê">Ê-đê</option>
+                        <option value="Ba-na">Ba-na</option>
+                        <option value="Sán Chay">Sán Chay</option>
+                        <option value="Chăm">Chăm</option>
+                        <option value="Xê-đăng">Xê-đăng</option>
+                        <option value="Khơ me">Sán Dìu</option>
+                        <option value="Khơ me">Hrê</option>
+                        <option value="Khơ me">Cơ-ho</option>
+                        <option value="Khơ me">Ra Glay</option>
+                        <option value="Khơ me">Thổ</option>
+                        <option value="Khơ me">Xtiêng</option>
+                        <option value="Khơ me">Khơ Mú</option>
+                        <option value="Khơ me">Bru-Vân Kiều</option>
+                        <option value="Khơ me">Giáy</option>
+                        <option value="Khơ me">Cơ tu</option>
+                        <option value="Khơ me">Gié-Triêng</option>
+                        <option value="Khơ me">Ta Ôi</option>
+                        <option value="Khơ me">Mạ</option>
+                        <option value="Khơ me">Co</option>
+                        <option value="Khơ me">Chơ Ro</option>
+                        <option value="Khơ me">Hà Nhì</option>
+                        <option value="Khơ me">Xinh Mun</option>
+                        <option value="Khơ me">Chu-ru</option>
+                        <option value="Khơ me">Lào</option>
+                        <option value="Khơ me">La Chí</option>
+                        <option value="Khơ me">Phù Lá</option>
+                        <option value="Khơ me">La Hủ</option>
+                        <option value="Khơ me">Kháng</option>
+                        <option value="Khơ me">Lự</option>
+                        <option value="Khơ me">Pà Thẻn</option>
+                        <option value="Khơ me">Lô Lô</option>
+                        <option value="Khơ me">Chứt</option>
+                        <option value="Khơ me">Mảng</option>
+                        <option value="Khơ me">Cờ lao</option>
+                        <option value="Khơ me">Bố Y</option>
+                        <option value="Khơ me">La Ha</option>
+                        <option value="Khơ me">Cống</option>
+                        <option value="Khơ me">Ngái</option>
+                        <option value="Khơ me">Si La</option>
+                        <option value="Khơ me">Pu Péo</option>
+                        <option value="Khơ me">Brâu</option>
+                        <option value="Khơ me">Rơ Măm</option>
+                        <option value="Khơ me">Ơ Đu</option>
+
+                    </select>
+                    <br />
+                </div>
+                
+                @*Tôn giáo*@
+                <div class="form-order col">
+                    <label for="tongiao">Tôn giáo</label>
+                    <select id="tongiao" class="custom-select" style="margin:0px; padding: .375rem .75rem">
+                        <option value="Không">Không</option>
+                        <option value="Phật giáo">Phật giáo</option>
+                        <option value="Công giáo">Công giáo</option>
+                        <option value="Tin Lành">Tin Lành</option>
+                        <option value="Hồi giáo">Hồi giáo</option>
+                        <option value="Cao Đài">Cao Đài</option>
+                        <option value="Hòa Hảo">Hòa Hảo</option>
+
+                    </select>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                @*Ngày vào Đảng*@
+                <div class="form-order col">
+                    <label for="ngayvaodang">Ngày vào Đảng</label>
+                    <input id="ngayvaodang" type="date" class="form-control" name="dayofDang" placeholder="Nhập ngày vào Đảng">
+                    <br />
+                </div>
+                @*Quê quán*@
+                <div class="form-order col">
+                    <label for="quequan">Quê quán <span style="color:red">(*)</span></label>
+                    <input id="quequan" type="text" class="form-control" name="queQuan" placeholder="Nhập quê quán (nhập tỉnh)" required value="@Model.QueQuan">
+                    @*<div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback">Bạn phải điền quê quán.</div>*@
+                    <br />
+                </div>
+
+                @*Nơi ở hiện nay*@
+                <div class="form-order col">
+                    <label for="noiohiennay">Nơi ở hiện nay <span style="color:red">(*)</span></label>
+                    <input id="noiohiennay" type="text" class="form-control" name="address" placeholder="Nhập nơi ở hiện nay (đầy đủ)" required value="@Model.NoiOHienNay">
+                    @*<div class="valid-feedback">OK</div>
+                    <div class="invalid-feedback">Bạn phải điền nơi ở hiện nay.</div>*@
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                @*Số điện thoại*@
+                <div class="form-order col">
+                    <label for="sodienthoai">Số điện thoại <span style="color:red">(*)</span></label>
+                    <input id="sodienthoai" type="text" class="form-control" name="phone" placeholder="Nhập số điện thoại" required value="@Model.SoDienThoai">
+                    <br />
+                </div>
+                
+                @*Mã sổ đoàn*@
+                <div class="form-order col">
+                    <label for="masodoan">Mã sổ đoàn</label>
+                    <input id="masodoan" type="text" class="form-control" name="maSoDoan" placeholder="Nhập mã sổ đoàn" value="@Model.MaSoDoan" disabled>
+                    <br />
+                </div>
+                
+                @*Mã chi đoàn*@
+                <div class="form-order col">
+                    <label for="machidoan">Mã chi đoàn <span style="color:red">(*)</span></label>
+                    <input id="machidoan" type="text" class="form-control" name="chiDoan" placeholder="Nhập chi đoàn" value="@Model.MaChiDoan" required disabled>
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary btn-block">Cập nhật thông tin</button>
+                </div>
+            </div>
+            
         </form>
+        <br />
     </div>
-</div>

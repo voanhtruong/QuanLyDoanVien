@@ -20,12 +20,17 @@ namespace QuanLyDoanVienProject
             
             routes.MapRoute(
                    name: "thong tin ca nhan",
-                   url: "infor",
-                   defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                   url: "me",
+                   defaults: new { controller = "DoanVien", action = "DoanVien", id = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+                   name: "dang ky chuyen sinh hoat",
+                   url: "chuyen-sinh-hoat",
+                   defaults: new { controller = "DangKyChuyenSinhHoat", action = "DangKyChuyenSinhHoat", id = UrlParameter.Optional }
                );
             routes.MapRoute(
                    name: "dang ky hoat dong",
-                   url: "dang-ky-hoat-dong",
+                   url: "ren-luyen",
                    defaults: new { controller = "DangKyChuongTrinh", action = "DangKyChuongTrinh", id = UrlParameter.Optional }
                );
 
