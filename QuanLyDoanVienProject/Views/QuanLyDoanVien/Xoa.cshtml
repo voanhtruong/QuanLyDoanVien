@@ -1,0 +1,132 @@
+﻿@model QuanLyDoanVienProject.Models.DoanVien
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<h2>Xóa đoàn viên</h2>
+
+<h3>Bạn có chắc muốn xóa đoàn viên này?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaSinhVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSinhVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTenDoanVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTenDoanVien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioiTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgaySinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgaySinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DanToc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanToc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TonGiao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TonGiao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QueQuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QueQuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiOHienNay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiOHienNay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayVaoDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayVaoDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaSoDoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSoDoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaChiDoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaChiDoan)
+        </dd>
+
+    </dl>
+    <br />
+    <br />
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Xác nhận xóa" class="btn btn-danger" /> |
+        @Html.ActionLink("Quay lại danh sách", "QuanLyDoanVien")
+        <br />
+        <br />
+    </div>
+    }
+</div>

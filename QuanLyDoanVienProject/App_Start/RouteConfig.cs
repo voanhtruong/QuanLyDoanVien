@@ -33,7 +33,41 @@ namespace QuanLyDoanVienProject
                    url: "ren-luyen",
                    defaults: new { controller = "DangKyChuongTrinh", action = "DangKyChuongTrinh", id = UrlParameter.Optional }
                );
-
+            routes.MapRoute(
+                   name: "quan ly doan co so",
+                   url: "doan-co-so",
+                   defaults: new { controller = "QuanLyDoanCoSo", action = "QuanLyDoanCoSo", id = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+                   name: "them doan co so",
+                   url: "them-doan-co-so",
+                   defaults: new { controller = "QuanLyDoanCoSo", action = "ThemDoanCoSo", id = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+                   name: "quan ly chi doan",
+                   url: "chi-doan",
+                   defaults: new { controller = "QuanLyChiDoan", action = "QuanLyChiDoan", id = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+                   name: "quan ly doan vien",
+                   url: "doan-vien",
+                   defaults: new { controller = "QuanLyDoanVien", action = "QuanLyDoanVien", id = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+                   name: "quan ly hoat dong",
+                   url: "hoat-dong",
+                   defaults: new { controller = "QuanLyHoatDong", action = "QuanLyHoatDong", id = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+                   name: "quan ly so doan",
+                   url: "so-doan",
+                   defaults: new { controller = "QuanLySoDoan", action = "QuanLySoDoan", id = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+                   name: "quan ly tai khoan",
+                   url: "tai-khoan",
+                   defaults: new { controller = "QuanLyTaiKhoan", action = "QuanLyTaiKhoan", id = UrlParameter.Optional }
+               );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

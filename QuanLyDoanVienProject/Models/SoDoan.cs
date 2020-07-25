@@ -27,6 +27,7 @@ namespace QuanLyDoanVienProject.Models
         public Nullable<System.DateTime> NgayCapThe { get; set; }
         public string NoiCapThe { get; set; }
         public Nullable<System.DateTime> NgayNopSo { get; set; }
+        public string TenSoDoan { get; set; }
     
         public virtual ICollection<DoanVien> DoanViens { get; set; }
         public virtual ICollection<NhanXet> NhanXets { get; set; }

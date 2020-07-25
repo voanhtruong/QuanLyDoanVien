@@ -1,0 +1,66 @@
+﻿@using QuanLyDoanVienProject.Models
+@model IEnumerable<SoDoan>
+
+@{
+    ViewBag.Title = "QuanLySoDoan";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+
+<center>
+    <h3>DANH SÁCH SỔ ĐOÀN</h3>
+    <br />
+    <br />
+    @webGrid.GetHtml(
+    tableStyle:"gridTable",
+    headerStyle:"gridHead",
+    footerStyle: "gridFooter",
+    rowStyle:"gridRow",
+    alternatingRowStyle:"gridAltRow",
+    columns: webGrid.Columns(
+        webGrid.Column("MaSoDoan", "Mã sổ đoàn"),
+        webGrid.Column("MaTheDoan", "Mã thẻ đoàn"),
+        webGrid.Column("NgayVaoDoan", "Ngày vào Đoàn"),
+        webGrid.Column("NoiVaoDoan", "Nơi vào Đoàn"),
+        webGrid.Column("NgayCapThe", "Ngày cấp thẻ đoàn"),
+        webGrid.Column("NoiCapThe", "Nơi cấp thẻ đoàn"),
+        webGrid.Column("NgayNopSo", "Ngày nộp sổ đoàn"),
+        webGrid.Column("TenSoDoan", "Tên sổ đoàn"),
+        webGrid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { MaSoDoan = p.MaSoDoan })),
+        webGrid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { MaSoDoan = p.MaSoDoan }))
+        ))
+
+</center>
+
+<div>
+    @Html.ActionLink("Thêm sổ đoàn", "ThemSoDoan")
+    <br />
+    <br />
+</div>
+<style>
+    .gridTable {
+        width: 100%;
+        border: 1px solid #0026ff;
+    }
+
+        .gridTable td {
+            padding-left: 2px;
+            padding-right: 2px;
+            border: 1px solid #0026ff;
+        }
+
+    .gridHead {
+        padding-left: 2px;
+        padding-right: 2px;
+        background-color: green;
+    }
+
+        .gridHead > th > a {
+            color: #ffffff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+</style>
+

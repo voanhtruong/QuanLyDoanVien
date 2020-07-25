@@ -3,7 +3,7 @@
 
 @{
     //khoi tao control webgrid
-    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 6);
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 20);
     ViewBag.Title = "QuanLyHoatDong";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
@@ -23,6 +23,34 @@
             webGrid.Column("ThoiGianBauDau", "Thời gian bắt đầu"),
             webGrid.Column("ThoiGianKetThuc", "Thời gian kết thúc"),
             webGrid.Column("DiaDiem", "Địa điểm tổ chức"),
-            webGrid.Column("MaCapHoatDong", "Mã cấp hoạt động")
+            webGrid.Column("MaCapHoatDong", "Mã cấp hoạt động"),
+            webGrid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { MaHoatDong = p.MaHoatDong })),
+            webGrid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { MaHoatDong = p.MaHoatDong }))
             ))
 </center>
+<style>
+    .gridTable {
+        width: 100%;
+        border: 1px solid #0026ff;
+    }
+
+        .gridTable td {
+            padding-left: 2px;
+            padding-right: 2px;
+            border: 1px solid #0026ff;
+        }
+
+    .gridHead {
+        padding-left: 2px;
+        padding-right: 2px;
+        background-color: green;
+    }
+
+        .gridHead > th > a {
+            color: #ffffff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+</style>

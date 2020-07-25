@@ -15,5 +15,12 @@ namespace QuanLyDoanVienProject.Controllers
         {
             return View(db.ChiDoans);
         }
+        [HttpGet]
+        public ActionResult ThemChiDoan()
+        {
+            ViewBag.MaDoanCoSo = new SelectList(db.DoanCoSoes.OrderBy(n => n.MaDoanCoSo), "MaDoanCoSo", "TenDoanCoSo");
+            ViewBag.MaKhoaDaoTao = new SelectList(db.KhoaDaoTaos.OrderBy(n => n.MaKhoaDaoTao), "MaKhoaDaoTao", "MoTa");
+            return View();
+        }
     }
 }

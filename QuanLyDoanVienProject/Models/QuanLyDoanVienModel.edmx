@@ -187,6 +187,7 @@
           <Property Name="NgayCapThe" Type="date" />
           <Property Name="NoiCapThe" Type="nvarchar" MaxLength="100" />
           <Property Name="NgayNopSo" Type="date" />
+          <Property Name="TenSoDoan" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SoDoanPhi">
           <Key>
@@ -804,6 +805,7 @@
           <Property Name="NgayNopSo" Type="DateTime" Precision="0" />
           <NavigationProperty Name="DoanViens" Relationship="Self.FK_DoanVien_SoDoan" FromRole="SoDoan" ToRole="DoanVien" />
           <NavigationProperty Name="NhanXets" Relationship="Self.FK_NhanXet_SoDoan" FromRole="SoDoan" ToRole="NhanXet" />
+          <Property Name="TenSoDoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SoDoanPhi">
           <Key>
@@ -1385,6 +1387,7 @@
           <EntitySetMapping Name="SoDoans">
             <EntityTypeMapping TypeName="QuanLyDoanVienModel.SoDoan">
               <MappingFragment StoreEntitySet="SoDoan">
+                <ScalarProperty Name="TenSoDoan" ColumnName="TenSoDoan" />
                 <ScalarProperty Name="MaSoDoan" ColumnName="MaSoDoan" />
                 <ScalarProperty Name="MaTheDoan" ColumnName="MaTheDoan" />
                 <ScalarProperty Name="NgayVaoDoan" ColumnName="NgayVaoDoan" />

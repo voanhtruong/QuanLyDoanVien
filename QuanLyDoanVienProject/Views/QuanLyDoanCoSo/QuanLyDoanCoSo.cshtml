@@ -1,13 +1,13 @@
 ﻿@using QuanLyDoanVienProject.Models
-@model IEnumerable<ChiDoan>
-
+@model IEnumerable<DoanCoSo>
 @{
-    ViewBag.Title = "QuanLyChiDoan";
+    ViewBag.Title = "QuanLyDoanCoSo";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
     WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 20);
 }
+
 <center>
-    <h3>DANH SÁCH CHI ĐOÀN</h3>
+    <h3>DANH SÁCH ĐOÀN CƠ SỞ</h3>
     <br />
     <br />
     @webGrid.GetHtml(
@@ -17,17 +17,15 @@
         rowStyle:"gridRow",
         alternatingRowStyle:"gridAltRow",
         columns: webGrid.Columns(
-            webGrid.Column("MaChiDoan", "Mã chi đoàn"),
-            webGrid.Column("TenChiDoan", "Tên chi đoàn"),
-            webGrid.Column("TenVietTat", "Tên chi đoàn viết tắt"),
-            webGrid.Column("MaDoanCoSo", "Mã Đoàn cơ sở"),
-            webGrid.Column("MaKhoaDaoTao", "Mã khóa đào tạo"),
-            webGrid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { MaChiDoan = p.MaChiDoan })),
-            webGrid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { MaChiDoan = p.MaChiDoan }))
+            webGrid.Column("MaDoanCoSo", "Mã Đoàn Cơ sở"),
+            webGrid.Column("TenDoanCoSo", "Tên Đoàn Cơ sở"),
+            webGrid.Column("TenDCSVietTat", "Tên Đoàn Cơ sở viết tắt"),
+            webGrid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { MaDoanCoSo = p.MaDoanCoSo })),
+            webGrid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { MaDoanCoSo = p.MaDoanCoSo }))
             ))
 </center>
 <div>
-    @Html.ActionLink("Thêm chi đoàn", "ThemChiDoan")
+    @Html.ActionLink("Thêm Đoàn Cơ sở", "ThemDoanCoSo")
     <br />
     <br />
 </div>
@@ -57,3 +55,4 @@
         font-weight: bold;
     }
 </style>
+

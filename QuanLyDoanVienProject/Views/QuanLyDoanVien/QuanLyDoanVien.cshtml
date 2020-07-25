@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "QuanLyDoanVien";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
-    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 6);
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 20);
 }
 <center>
     <h3>DANH SÁCH ĐOÀN VIÊN</h3>
@@ -28,9 +28,38 @@
         webGrid.Column("NgayVaoDang", "Ngày vào Đảng"),
         webGrid.Column("SoDienThoai", "Số điện thoại"),
         webGrid.Column("MaSoDoan", "Mã sổ đoàn"),
-        webGrid.Column("AccountID", "Mã tài khoản")
+        webGrid.Column("AccountID", "Mã tài khoản"),
+        webGrid.Column(format: p=>Html.ActionLink("Chỉnh sửa","ChinhSua",new { MaSinhVien=p.MaSinhVien})),
+        webGrid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { MaSinhVien = p.MaSinhVien }))
         ))
 
 </center>
+<div>
+    @Html.ActionLink("Thêm đoàn viên", "TaoMoiDoanVien")
+    <br />
+    <br />
+</div>
 
-
+<style>
+    .gridTable{
+        width:100%;
+        border: 1px solid #0026ff;
+    }
+    .gridTable td {
+        padding-left:2px;
+        padding-right:2px;
+        border: 1px solid #0026ff;
+    }
+    .gridHead {
+        padding-left: 2px;
+        padding-right: 2px;
+        background-color: green;
+       
+    }
+    .gridHead > th > a {
+        color:#ffffff;
+    }
+    .gridFooter{
+        font-weight:bold;
+    }
+</style>

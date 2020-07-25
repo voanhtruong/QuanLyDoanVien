@@ -136,8 +136,11 @@
     <Compile Include="Controllers\DongDoanPhiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuanLyChiDoanController.cs" />
+    <Compile Include="Controllers\QuanLyDoanCoSoController.cs" />
     <Compile Include="Controllers\QuanLyDoanVienController.cs" />
     <Compile Include="Controllers\QuanLyHoatDongController.cs" />
+    <Compile Include="Controllers\QuanLySoDoanController.cs" />
+    <Compile Include="Controllers\QuanLyTaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2023,6 +2026,15 @@
     <Content Include="Views\QuanLyDoanVien\QuanLyDoanVien.cshtml" />
     <Content Include="Views\QuanLyChiDoan\QuanLyChiDoan.cshtml" />
     <Content Include="Views\QuanLyDoanVien\TaoMoiDoanVien.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\QuanLyTaiKhoan.cshtml" />
+    <Content Include="Views\QuanLyTaiKhoan\ThemTaiKhoan.cshtml" />
+    <Content Include="Views\QuanLySoDoan\QuanLySoDoan.cshtml" />
+    <Content Include="Views\QuanLySoDoan\ThemSoDoan.cshtml" />
+    <Content Include="Views\QuanLyChiDoan\ThemChiDoan.cshtml" />
+    <Content Include="Views\QuanLyDoanVien\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLyDoanVien\Xoa.cshtml" />
+    <Content Include="Views\QuanLyDoanCoSo\QuanLyDoanCoSo.cshtml" />
+    <Content Include="Views\QuanLyDoanCoSo\ThemDoanCoSo.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

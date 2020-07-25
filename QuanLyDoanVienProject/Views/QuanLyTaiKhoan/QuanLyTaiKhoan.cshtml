@@ -1,0 +1,63 @@
+﻿@using QuanLyDoanVienProject.Models
+@model IEnumerable<Account>
+
+@{
+    ViewBag.Title = "QuanLyTaiKhoan";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    WebGrid webGrid = new WebGrid(source: Model, rowsPerPage: 20);
+}
+
+<center>
+    <h3>DANH SÁCH TÀI KHOẢN</h3>
+    <br />
+    <br />
+    @webGrid.GetHtml(
+    tableStyle:"gridTable",
+    headerStyle:"gridHead",
+    footerStyle: "gridFooter",
+    rowStyle:"gridRow",
+    alternatingRowStyle:"gridAltRow",
+    columns: webGrid.Columns(
+        webGrid.Column("AccountID", "Tài khoản"),
+        webGrid.Column("Password", "Mật khẩu"),
+        webGrid.Column("Email", "Email"),
+        webGrid.Column("IsActive", "Trạng thái"),
+        webGrid.Column("GrantID", "Mã phân quyền"),
+        webGrid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { AccountID = p.AccountID })),
+        webGrid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { AccountID = p.AccountID }))
+
+        ))
+
+</center>
+
+<div>
+    @Html.ActionLink("Thêm tài khoản", "ThemTaiKhoan")
+    <br />
+    <br />
+</div>
+<style>
+    .gridTable {
+        width: 100%;
+        border: 1px solid #0026ff;
+    }
+
+        .gridTable td {
+            padding-left: 2px;
+            padding-right: 2px;
+            border: 1px solid #0026ff;
+        }
+
+    .gridHead {
+        padding-left: 2px;
+        padding-right: 2px;
+        background-color: green;
+    }
+
+        .gridHead > th > a {
+            color: #ffffff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+</style>
